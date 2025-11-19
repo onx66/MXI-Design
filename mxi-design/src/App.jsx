@@ -1,132 +1,80 @@
-// App.jsx
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
+import { sliderData } from "./assets/SliderData";
 
 export default function App() {
-  const carouselRef = useRef(null);
-  const nextRef = useRef(null);
-  const prevRef = useRef(null);
-  const listRef = useRef(null);
-  const thumbnailRef = useRef(null);
+  const [active, setActive] = useState(0);
 
-  useEffect(() => {
-    const nextDom  = nextRef.current;
-    const prevDom  = prevRef.current;
-    const carousel = carouselRef.current;
-    const listDom  = listRef.current;
-    const thumbDom = thumbnailRef.current;
+  const next = () => {
+    setActive((prev) => (prev + 1) % sliderData.length);
+  };
 
-    const timeRunning = 350;
-
-    /* --------------  H E L P E R  -------------- */
-    const showSlider = (type) => {
-      const items       = [...listDom.querySelectorAll(".item")];
-      const thumbItems  = [...thumbDom.querySelectorAll(".item")];
-
-      if (type === "next") {
-        listDom.appendChild(items[0]);
-        thumbDom.appendChild(thumbItems[0]);
-        carousel.classList.remove("prev");
-        carousel.classList.add("next");
-      } else if (type === "prev") {
-        listDom.prepend(items[items.length - 1]);
-        thumbDom.prepend(thumbItems[thumbItems.length - 1]);
-        carousel.classList.remove("next");
-        carousel.classList.add("prev");
-      } else {
-       
-        const currentFirst = items[0];
-        
-        const diff =
-          type -
-          items.findIndex((it) => it.dataset.key === currentFirst.dataset.key);
-
-        for (let i = 0; i < Math.abs(diff); i++) {
-          if (diff > 0) {
-            listDom.appendChild(listDom.querySelector(".item"));
-            thumbDom.appendChild(thumbDom.querySelector(".item"));
-          } else {
-            listDom.prepend(listDom.querySelectorAll(".item").item(-1));
-            thumbDom.prepend(thumbDom.querySelectorAll(".item").item(-1));
-          }
-        }
-        carousel.classList.remove("next", "prev");
-      }
-
-      
-      setTimeout(() => carousel.classList.remove("next", "prev"), timeRunning);
-    };
-
-    /* --------------  E V E N T S  -------------- */
-
-    nextDom.onclick = () => showSlider("next");
-    prevDom.onclick = () => showSlider("prev");
-
-   
-    thumbDom.querySelectorAll(".item").forEach((el, idx) => {
-      el.onclick = () => showSlider(idx);
-    });
-  }, []);
-
-  /* --------------  R E N D E R  -------------- */
-
-  const animals = ["aslan", "fil", "leopar", "zürafa"];
+  const prev = () => {
+    setActive((prev) => (prev - 1 + sliderData.length) % sliderData.length);
+  };
 
   return (
     <>
+      {/* HEADER */}
       <header>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Products</a>
-          <a href="#">News</a>
-          <a href="#">Partners</a>
-          <a href="#">Contact Us</a>
-        </nav>
-        <img
-          src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png"
-          alt="logo"
-        />
+        <div className="logo">
+          <img src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png" />
+        </div>
+        <ul className="menu">
+          <li>Home</li>
+          <li>Products</li>
+          <li>News</li>
+          <li>Partners</li>
+          <li>Contact Us</li>
+        </ul>
       </header>
-      <div className="carousel" ref={carouselRef}>
-        <div className="list" ref={listRef}>
-          {animals.map((animal) => (
-            <div className="item" key={animal} data-key={animal}>
-              <img src={`/${animal}.jpg`} alt={animal} />
+
+      {/* SLIDER */}
+      <div className="slider">
+        {/* LIST ITEMS */}
+        <div className="list">
+          {sliderData.map((item, index) => (
+            <div
+              key={index}
+              className={`item ${active === index ? "active" : ""}`}
+            >
+              <img src={item.img} />
               <div className="content">
-                <div className="author">LGKP</div>
-                <div className="title">KARPOTHOS</div>
-                <div className="topic">AIRPORT</div>
-                <div className="des">
-                  Karpathos Airport (IATA: AOK, ICAO: LGKP) is an airport on the island of Karpathos, Greece. The airport is situated on the southeastern part of Karpathos island, about 14 km away from the capital, Pigadia. The Karpathos Airport is one of the smallest international airports in Greece, but it is very important for the island because this is the primary connection between Karpathos and other Greek islands, and of course several countries of Europe.
-                </div>
-                <div className="buttons">
-                  <button>SEE MORE</button>
-                  <button>SUBSCRIBE</button>
-                </div>
+                <p>{item.title}</p>
+                <h2>{item.subtitle}</h2>
+                <p>{item.desc}</p>
+                <button>More Info</button>
               </div>
             </div>
           ))}
         </div>
-        <div className="thumbnail" ref={thumbnailRef}>
-          {animals.map((animal) => (
-            <div className="item" key={animal} data-key={animal}>
-              <img src={`/${animal}.jpg`} alt={animal} />
-              <div className="content">
-                <div className="title">Name Slider</div>
-                <div className="des">Description</div>
-              </div>
-            </div>
-          ))}
-        </div>
+
+        {/* BUTTON ARROWS */}
         <div className="arrows">
-          <button id="prev" ref={prevRef}>
-            {"<"}
-          </button>
-          <button id="next" ref={nextRef}>
-            {">"}
-          </button>
+          <button onClick={prev}>{"<"}</button>
+          <button onClick={next}>{">"}</button>
         </div>
-        <div className="time"></div>
+
+        {/* THUMBNAILS */}
+        <div className="thumbnail">
+          {sliderData.map((item, index) => (
+            <div
+              key={index}
+              className={`item ${active === index ? "active" : ""}`}
+              onClick={() => setActive(index)}
+            >
+              <img src={item.img} />
+              <div className="content">
+                {item.title} Airport
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* VIEW ALL PRODUCTS BUTTON */}
+        <div className="view-all-container">
+          <button className="view-all-btn">View All Products</button>
+        </div>
       </div>
     </>
   );
