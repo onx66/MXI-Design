@@ -2,253 +2,12 @@
 @import "leaflet/dist/leaflet.css";
 
 body {
-    font-family: Poppins;
+    font-family: "Ubuntu", sans-serif;
     margin: 0;
     background-color: #010101;
     color: #eee;
 }
 
-header {
-    width: 1200px;
-    max-width: 90%;
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    grid-template-rows: 50px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 100;
-}
-
-header .logo img {
-    width: 100px;
-}
-
-header .menu {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: end;
-    gap: 20px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-/* css slider */
-.slider {
-    height: 100vh;
-    margin-top: -110px;
-    position: relative;
-}
-
-.slider .list .item {
-    position: absolute;
-    inset: 0 0 0 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: .5s;
-}
-
-.slider .list .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-}
-
-.slider .list .item::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-image: linear-gradient(to top, #000 40%, transparent);
-}
-
-.slider .list .item .content {
-    position: absolute;
-    padding: 0;
-    left: 17%;
-    top: 20%;
-    width: 500px;
-    max-width: 80%;
-    z-index: 1;
-}
-
-.slider .list .item .content p:nth-child(1) {
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    margin: 0;
-
-}
-
-.slider .list .item .content h2 {
-    font-size: 90px;
-    margin: 0;
-}
-
-
-.slider .list .item .content p:nth-child(3) {
-    font-weight: bold;
-}
-
-
-.slider .list .item.active {
-    opacity: 1;
-    z-index: 10;
-}
-
-@keyframes showContent {
-    to {
-        transform: translateY(0);
-        filter: blur(0);
-        opacity: 1;
-    }
-}
-
-.slider .list .item.active p:nth-child(1),
-.slider .list .item.active h2,
-.slider .list .item.active p:nth-child(3),
-.slider .list .item.active button {
-    transform: translateY(30px);
-    filter: blur(20px);
-    opacity: 0;
-    animation: showContent .5s .7s ease-in-out 1 forwards;
-}
-
-.slider .list .item.active h2 {
-    animation-delay: 1s;
-}
-
-.slider .list .item.active p:nth-child(3) {
-    animation-duration: 1.3s;
-}
-
-.slider .list .item button {
-    font-family: Poppins;
-    font-weight: bold;
-    letter-spacing: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #eee5;
-    color: #eee;
-    width: 150px;
-    height: 30px;
-    z-index: 100;
-    animation-duration: 3s;
-    cursor: pointer;
-}
-
-.slider .list .item button:hover {
-    background-color: #eee;
-    color: black;
-}
-
-.arrows {
-    position: absolute;
-    display: flex;
-    gap: 10px;
-    top: 30%;
-    right: 25%;
-    z-index: 100;
-}
-
-.arrows button {
-    background-color: #eee5;
-    border: none;
-    font-family: monospace;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    font-size: x-large;
-    color: #eee;
-    transition: .5s;
-    cursor: pointer;
-}
-
-.arrows button:hover {
-    background-color: #eee;
-    color: black;
-}
-
-.thumbnail {
-    position: absolute;
-    bottom: 50px;
-    right: 7%;
-    z-index: 11;
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    height: 250px;
-    padding: 0 50px;
-    box-sizing: border-box;
-    overflow: auto;
-    justify-content: end;
-}
-
-.thumbnail::-webkit-scrollbar {
-    width: 0;
-}
-
-.thumbnail .item {
-    width: 150px;
-    height: 220px;
-    filter: brightness(.5);
-    transition: .5s;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
-.thumbnail .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.thumbnail .item.active {
-    filter: brightness(1.5);
-}
-
-.thumbnail .item .content {
-    position: absolute;
-    inset: auto 10px 10px 10px;
-}
-
-/* View All Products Button Styles */
-.view-all-container {
-    position: absolute;
-    bottom: 30px;
-    right: 7%;
-    z-index: 11;
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    padding: 0 50px;
-    box-sizing: border-box;
-}
-
-.view-all-btn {
-    font-family: Poppins;
-    font-weight: bold;
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 5px;
-    background-color: #eee5;
-    color: #eee;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: .5s;
-    margin-top: 10px;
-}
-
-.view-all-btn:hover {
-    background-color: #eee;
-    color: black;
-}
 
 .world-map-section {
     width: 100%;
@@ -256,112 +15,24 @@ header .menu {
     position: relative;
     margin-top: 0;
 }
-.map-text{
-    background-color: #eee5;
-   width: 100%;
-   height: 50px;
-   text-align: center;
+
+.map-text {
+    background-color: #4b4b4b;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding-top: 12px;
+}
+.map-text h1{
+    margin: 0;
 }
 
 
-@media screen and (max-width:990px)  {
-    .thumbnail {
-        padding-left: 80px;
-        justify-content: start;
-    }
 
-    .view-all-container {
-        padding-left: 80px;
-        justify-content: start;
-    }
 
-    .slider .list .item .content {
-        width: 400px;
-        left: 10%;
 
-    }
 
-    
-}
 
-@media screen and (max-width:790px) {
-    .thumbnail {
-        justify-content: start;
-    }
 
-    .view-all-container {
-        justify-content: start;
-    }
 
-    .slider .list .item .content h2 {
-        font-size: 60px;
-    }
-
-    .arrows {
-        top: 25%;
-    }
-}
-@media screen and (max-height:600px) {
- 
-
-    .slider .list .item .content {
-    top: 9%;
-    width: 700px;
-   
-}
-.thumbnail{
-    bottom: 15px;
-}
-.view-all-container {
-      bottom: 0;
-    }
-     .arrows {
-        top: 20%;
-    }
-    
-}
-
-@media screen and (max-width:600px) {
-    header {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header .menu {
-        font-size: 12px;
-        justify-content: center;
-        gap: 20px;
-        font-weight: bold;
-    }
-
-    .slider {
-        margin-top: -140px;
-    }
-
-    .slider .list .item .content {
-        top: 25%;
-    }
-
-    .arrows {
-        top: 25%;
-        right: 5%;
-    }
-}
-@media screen and (max-width:380px) {
-  
-   .slider .list .item .content p:nth-child(3) {
-        font-size: 9px;
-    }
-    .slider .list .item .content p:nth-child(1) {
-        font-size: 11px;
-    }
-    .slider .list .item .content h2 {
-        font-size: 20px;
-    }
-    .slider{
-        margin-top: -160px;
-    }
-    
-}
 
