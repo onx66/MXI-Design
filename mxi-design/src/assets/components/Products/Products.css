@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    margin: 0;
+   background-color: #e9e9ea;
+}
+
+.products-header {
+    width: 100%;
+    max-width: 100%;
+     background: linear-gradient(to bottom, #595959, #b4b4b9);
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 10px 0;
+}
+
+
+.products-container {
+    max-width: 1400px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    justify-items: center;
+     flex: 1; 
+}

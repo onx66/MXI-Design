@@ -1,6 +1,7 @@
 import { sliderData } from "../../SliderData";
 import { useState } from "react";
 import "./Slider.css";
+import { Link } from "react-router-dom";
 
 
 function Slider() {
@@ -56,7 +57,7 @@ function Slider() {
 
                 {/* VIEW ALL BUTTON */}
                 <div className="view-all-container">
-                    <button className="view-all-btn">View All Products</button>
+                    <button className="view-all-btn"> <Link to="/products"> View All Products</Link>  </button>
                 </div>
             </div>
         </>
