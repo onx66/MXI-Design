@@ -1,26 +1,31 @@
-
-
-import "./Products.css";
+import { useEffect, useState } from "react";
 import Headers from "../Header/Header.jsx";
-import Footer from "../Footer/Footer.jsx"
+import Footer from "../Footer/Footer.jsx";
 import ProductItem from "./ProductItem/ProductItem.jsx";
-import { sliderData } from "../../SliderData.js";
+import "./Products.css";
 
 function Products() {
-    return (
+    const [products, setProducts] = useState([]);
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/sliders")
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error(err));
+    }, []);
+
+    return (
         <div className="products-page-container">
-            <Headers className="products-header" />
+            <Headers className={"products-header"} />
 
             <div className="products-container">
-                {sliderData.map((item, index) => (
-                    <ProductItem key={index} item={item} />
+                {products.map(item => (
+                    <ProductItem key={item.id} item={item} />
                 ))}
             </div>
 
-            <Footer className="products-footer" />
+            <Footer />
         </div>
-
     );
 }
 
