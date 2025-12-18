@@ -9,7 +9,7 @@ function Slider() {
     useEffect(() => {
         fetch("http://localhost:8080/api/sliders")
             .then(res => res.json())
-            .then(data => setSliders(data))
+            .then(data => setSliders(data.slice(0,5)))
             .catch(err => console.error(err));
     }, []);
 
