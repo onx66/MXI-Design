@@ -19,7 +19,7 @@ function Header({ className }) {
                     <li><Link to="/news">News</Link></li>
                     <li><Link to="/partners">Partners</Link></li>
                     <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact Us</Link></li>
+                    <li><Link to="/contact"><ButtonContactUs /></Link></li>
                 </ul>
             </header>
         </>
