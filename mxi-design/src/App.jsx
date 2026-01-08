@@ -1,7 +1,8 @@
 
 import "./App.css";
-import Header from "./components/Header/Header";
-import Slider from "./components/Slider/Slider";
+
+import HomePage from "./components/HomePage/HomePage";
+
 
 
 
@@ -14,8 +15,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <Slider />
+      <HomePage />
     </>
   );
 }
