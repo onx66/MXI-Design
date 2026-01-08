@@ -1,0 +1,177 @@
+/* Container */
+.getaround-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main Button */
+.getaround-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  background: linear-gradient(135deg, transparent);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  margin: 0;
+}
+
+.getaround-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(15px);
+  opacity: 0;
+  z-index: -1;
+}
+
+.getaround-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(transparent);
+  transform: scale(0);
+  z-index: -1;
+}
+
+.getaround-button:hover::before {
+  opacity: 1;
+}
+
+.getaround-button:hover::after {
+  transform: scale(1);
+}
+
+.getaround-button:active {
+  transform: translateY(-2px);
+
+}
+
+/* Button Text */
+.getaround-text {
+  font-size: 16px;
+  font-weight: 300;
+  transition: letter-spacing 0.3s ease;
+}
+
+.getaround-button:hover .getaround-text {
+  letter-spacing: 1px;
+}
+
+/* Button Icon */
+.getaround-icon {
+  width: 20px;
+  height: 20px;
+  fill: (119, 224, 242, 0.4);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.getaround-button:hover .getaround-icon {
+  transform: rotate(360deg);
+}
+
+/* Tooltip */
+.getaround-tooltip {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: transparent;
+  border: 1px solid;
+  border-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 100;
+  margin-top: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.getaround-container:hover .getaround-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+
+.getaround-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent rgba(255, 255, 255, 0.95) transparent;
+}
+
+/* Icons Container */
+.getaround-icons {
+  display: flex;
+  gap: 16px;
+  background-color: transparent;
+}
+
+/* Icon Buttons */
+.getaround-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+.getaround-icon-btn:hover {
+  transform: translateY(-1px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.getaround-icon-btn:active {
+  transform: translateY(-1px) scale(1.05);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .getaround-button {
+    padding: 12px 24px;
+  }
+
+  .getaround-text {
+    font-size: 16px;
+  }
+
+  .getaround-tooltip {
+    padding: 12px;
+  }
+
+  .getaround-icons {
+    gap: 12px;
+  }
+
+  .getaround-icon-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .getaround-icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}

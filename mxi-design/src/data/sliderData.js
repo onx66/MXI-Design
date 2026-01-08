@@ -1,6 +1,26 @@
+
+import sabiha from "../assets/images/istanbul-airport.jpg";
+import karpathos from "../assets/images/karpothos-airport.jpg";
+import kaunas from "../assets/images/kaunas-airport.jpg";
+import örebro from "../assets/images/örebro-airport.jpg";
+
+
+
+
+
+
 export const sliderData = [
+    {
+    img:sabiha,
+    code: "LTFJ",
+    title: "Istanbul Sabiha Gökçen",
+    subtitle: "Airport",
+    desc:
+      "Istanbul Sabiha Gökçen International Airport is the secondary international airport serving Istanbul.",
+       welcomeText: "Istanbul Starts Here!",
+  },
   {
-    img: "karpothos-airport.jpg",
+    img: karpathos,
     code: "LGKP",
     title: "Karpathos",
     subtitle: "Airport",
@@ -9,7 +29,7 @@ export const sliderData = [
     welcomeText: "Welcome to Karpathos!",
   },
   {
-    img: "kaunas-airport.jpg",
+    img: kaunas,
     code: "EYKA",
     title: "Kaunas",
     subtitle: "Airport",
@@ -18,7 +38,7 @@ export const sliderData = [
        welcomeText: "Welcome to Kaunas!",
   },
   {
-    img: "örebro-airport.jpg",
+    img: örebro,
     code: "ESOE",
     title: "Örebro",
     subtitle: "Airport",
@@ -26,22 +46,5 @@ export const sliderData = [
       "Örebro Airport is Sweden's 23rd largest passenger airport and the fourth largest cargo airport.",
        welcomeText: "Sweden Stars Here!",
   },
-  {
-    img: "preveza-airport.jpg",
-    code: "LGPZ",
-    title: "Preveza",
-    subtitle: "Airport",
-    desc:
-      "Aktion National Airport is an airport serving Preveza and Lefkada in Greece.",
-       welcomeText: "Welcome to Preveza!",
-  },
-  {
-    img: "sabiha-gökçen-airport.jpg",
-    code: "LTFJ",
-    title: "İstanbul",
-    subtitle: "Airport",
-    desc:
-      "Istanbul Sabiha Gökçen International Airport is the secondary international airport serving Istanbul.",
-       welcomeText: "Istanbul Starts Here!",
-  },
+  
 ];
