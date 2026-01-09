@@ -70,7 +70,23 @@ function Slider() {
           >
             <img src={item.img} alt={item.title} />
             <div className="content">
-              {item.title} 
+              <div className="content-airport-name">
+                {(() => {
+                  const words = item.title.split(" ");
+
+                  return (
+                    <h2>
+                      <span className="title-top">{words[0]}</span>
+                      <span className="title-bottom">
+                        {words.slice(1).join(" ")}
+                      </span>
+                    </h2>
+                  );
+                })()}
+                <p>{item.subtitle}</p>
+              </div>
+
+              <div className="content-airport-code">{item.code}</div>
             </div>
           </div>
         ))}

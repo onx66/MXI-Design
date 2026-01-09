@@ -26,41 +26,47 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    inset:0;
-     background: linear-gradient(
-        to top right,
-        rgba(45, 103, 114, 0.75),
-        rgba(23, 83, 100, 0.2),
-        rgba(0, 0, 0, 0)
-    );
-      z-index: 1;
+    inset: 0;
+    background: linear-gradient(to bottom right,
+            rgba(0, 150, 137, 0.4) 0%,
+            rgba(28, 57, 142, 0.6) 50%,
+            rgba(15, 23, 43, 0.8) 100%);
+    z-index: 1;
 }
 
 .slider .list .item .content {
     position: absolute;
     padding: 0;
     left: 10%;
-    top: 23%;
-    max-width: 80%;
+    top: 25%;
+    max-width: 896px;
+    ;
     z-index: 5;
-    
+
 }
 
-.slider .list .item .content  h1{
+.slider .list .item .content h1 {
     margin: 0;
-    font-size: 60px;
+    font-size: 69px;
     font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    line-height: 73px;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: left;
 }
 
 
-.slider .list .item .content .subtitle{
-    font-weight: 300;
+.slider .list .item .content .subtitle {
+    font-weight: 200;
 }
 
 
 .slider .list .item .content p:nth-child(3) {
-    max-width: 80%;
-    font-size: 20px;
+    max-width: 657px;
+    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    font-weight: lighter;
 }
 
 
@@ -90,6 +96,7 @@
 .slider .list .item.active h1:nth-child(1) {
     animation-delay: 0.3s;
 }
+
 .slider .list .item.active h1:nth-child(2) {
     animation-delay: 0.5s;
 }
@@ -123,23 +130,23 @@
 }
 
 .arrows button:hover {
-    background-color: #70bdca;
-    color:white;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: white;
 }
 
 .thumbnail {
     position: absolute;
-    bottom: 130px;
+    bottom: 150px;
     right: 7%;
     z-index: 11;
     display: flex;
     gap: 10px;
     width: 100%;
-    height: 270px;
+    height: 250px;
     padding: 0 50px;
     box-sizing: border-box;
-    overflow: auto;
     justify-content: end;
+
 }
 
 .thumbnail::-webkit-scrollbar {
@@ -163,18 +170,40 @@
 }
 
 .thumbnail .item.active {
-    filter: brightness(1.5);
+    filter: brightness(0.9);
 }
 
 .thumbnail .item .content {
     position: absolute;
     inset: auto 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-airport-name h2 {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: medium;
+    margin: 0;
+    padding: 0;
+    letter-spacing: -0.15px;
+}
+
+.content-airport-name p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: regular;
+    margin: 0;
+    padding: 5px 0px;
 }
 
 /* View All Products Button Styles */
 .view-all-container {
     position: absolute;
-    bottom: 100px;
+    bottom: 80px;
     right: 7%;
     z-index: 11;
     display: flex;
@@ -203,6 +232,18 @@
     color: black;
 }
 
+.content-airport-code {
+    padding: 8px 12px;
+    background-color: rgba(40, 196, 181, 0.26);
+    border: 1px solid #81FBEE;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+}
+
 @media screen and (max-width:990px) {
     .thumbnail {
         padding-left: 105px;
@@ -224,7 +265,7 @@
 @media screen and (max-width:790px) {
     .thumbnail {
         justify-content: start;
-         padding-left: 85px;
+        padding-left: 85px;
     }
 
     .view-all-container {
@@ -264,7 +305,7 @@
     }
 
     .thumbnail {
-      
+
         bottom: 15px;
     }
 
@@ -280,12 +321,12 @@
 }
 
 @media screen and (max-width:380px) {
-   .slider .list .item .content {
-   
-    left: 12%;
-    top: 27%;
-    
-}
+    .slider .list .item .content {
+
+        left: 12%;
+        top: 27%;
+
+    }
 
     .slider .list .item .content p:nth-child(3) {
         font-size: 11px;
@@ -302,25 +343,28 @@
     .slider {
         margin-top: -160px;
     }
-     .thumbnail {
+
+    .thumbnail {
         right: 16%;
     }
+
     .view-all-container {
-  
-    padding: 0 80px;
-  
-}
+
+        padding: 0 80px;
+
+    }
+
     .view-all-btn {
-  
-  
-    letter-spacing: 2px;
-    border: none;
-    border-radius: 5px;
-    background-color: #eee5;
-    color: #eee;
-    padding: 10px 10px;
-    left: 12%;
-   
-}
+
+
+        letter-spacing: 2px;
+        border: none;
+        border-radius: 5px;
+        background-color: #eee5;
+        color: #eee;
+        padding: 10px 10px;
+        left: 12%;
+
+    }
 
 }
