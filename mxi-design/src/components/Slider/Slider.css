@@ -154,13 +154,35 @@
 }
 
 .thumbnail .item {
+    position: relative;
     width: 230px;
     height: 250px;
     filter: brightness(.5);
     transition: .5s;
     flex-shrink: 0;
     cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+.thumbnail .item::after {
+    content: "";
+    position: absolute;
+
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg,
+            #6ff5d2,
+            #4fd1b5);
+    opacity: 1;
+    transform: scaleX(1.2);
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+
 
 .thumbnail .item img {
     width: 100%;
@@ -175,11 +197,13 @@
 
 .thumbnail .item .content {
     position: absolute;
-    inset: auto 10px 10px 10px;
+    inset: auto 12px 20px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+
 
 .content-airport-name h2 {
     display: flex;
