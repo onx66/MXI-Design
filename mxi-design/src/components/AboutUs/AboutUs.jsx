@@ -17,8 +17,8 @@ function AboutUs() {
                         experience by bringing real-world airports to life
                         with accuracy, detail, and immersion.</p>
                     <div className="microsoft-text">
-                       <div className="microsoft-text-logo">Flight Simulator</div>
-                       <div className="microsoft-text-logo">Xplane</div>
+                        <div className="microsoft-text-logo">Flight Simulator</div>
+                        <div className="microsoft-text-logo">Xplane</div>
                     </div>
                 </div>
                 <div className="about-us-logo">

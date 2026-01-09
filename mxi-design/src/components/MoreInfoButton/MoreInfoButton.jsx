@@ -1,9 +1,11 @@
 import "./MoreInfoButton.css";
 
 
-function MoreInfoButton (){
-    return(
-        <button className="more-info-button">View Product</button>
+function MoreInfoButton() {
+    return (
+        <button className="more-info-button">
+            <span>Learn More</span>
+        </button>
     )
 }
 

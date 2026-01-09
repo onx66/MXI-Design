@@ -9,37 +9,50 @@ header {
     align-items: center;
     position: relative;
     z-index: 100;
-   
+
 }
-.header-container{
+
+.header-container {
     display: flex;
     gap: 50px;
 }
 
-.header-container .logo  {
+.header-container .logo {
     width: 100px;
     gap: 10px;
     margin-right: 10px;
 }
 
+
 .header-container .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 48px;
     padding: 0;
     margin: 0;
     list-style: none;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 50px;
     font-size: 16px;
     font-weight: 500;
-    cursor: pointer;
-    opacity: 0.8;
     letter-spacing: 0.06em;
-    color:white;
+    color: #ffffff;
+    opacity: 0.8;
+    cursor: pointer;
 }
+
+.header-container .menu li {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+}
+
+.header-container .menu li:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
 .contact-us-button {
-  justify-self: end; 
- 
+    justify-self: end;
+
 }
 
 @media screen and (max-width:940px) {

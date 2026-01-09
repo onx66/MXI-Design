@@ -10,14 +10,14 @@ import örebro from "../assets/images/örebro-airport.jpg";
 
 
 export const sliderData = [
-    {
-    img:sabiha,
+  {
+    img: sabiha,
     code: "LTFJ",
     title: "Istanbul Sabiha Gökçen",
     subtitle: "Airport",
     desc:
-      "Istanbul Sabiha Gökçen International Airport is the secondary international airport serving Istanbul.",
-       welcomeText: "Istanbul Starts Here!",
+      "Istanbul Sabiha Gökçen International Airport (IATA: SAW, ICAO: LTFJ) is the secondary international airport serving Istanbul, Turkey. ",
+    welcomeText: "Istanbul Starts Here!",
   },
   {
     img: karpathos,
@@ -35,7 +35,7 @@ export const sliderData = [
     subtitle: "Airport",
     desc:
       "Kaunas Airport is the second busiest civil airport in Lithuania after Vilnius Airport.",
-       welcomeText: "Welcome to Kaunas!",
+    welcomeText: "Welcome to Kaunas!",
   },
   {
     img: örebro,
@@ -44,7 +44,7 @@ export const sliderData = [
     subtitle: "Airport",
     desc:
       "Örebro Airport is Sweden's 23rd largest passenger airport and the fourth largest cargo airport.",
-       welcomeText: "Sweden Stars Here!",
+    welcomeText: "Sweden Stars Here!",
   },
-  
+
 ];

@@ -17,6 +17,7 @@
   overflow: hidden;
   z-index: 10;
   margin: 0;
+  
 }
 
 .getaround-button::before {
@@ -110,7 +111,7 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 0 10px 10px 10px;
+  border-width: 0 5px 5px 5px;
   border-style: solid;
   border-color: transparent transparent rgba(255, 255, 255, 0.95) transparent;
 }
@@ -134,12 +135,14 @@
   border: 1px solid;
   color: white;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
 }
 
 
 .getaround-icon-btn:hover {
   transform: translateY(-1px) scale(1.1);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .getaround-icon-btn:active {
