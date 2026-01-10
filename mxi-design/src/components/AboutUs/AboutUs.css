@@ -1,11 +1,17 @@
 body {
-
-
     background: linear-gradient(to top right,
             rgba(15, 23, 43, 1),
             rgba(22, 36, 86, 1),
             rgba(2, 47, 46, 1));
 
+}
+
+.about-us-section {
+    width: 100%;
+    margin: 60px auto;
+    max-width: 910px;
+    text-align: center;
+    padding: 20px;
 }
 
 .about-us-section h1 {
@@ -20,45 +26,39 @@ body {
 
 .about-us-line {
     border: 2px solid;
-
     width: 96px;
     margin: 20px auto;
     border-image: linear-gradient(90deg,
             rgb(0, 213, 190),
             rgb(43, 127, 255)) 1;
-
 }
 
-.microsoft-text {
-
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-
+.about-us-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 50px;
 }
-
 .about-us-text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
 .about-us-text p {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
-    font-weight: 200;
+    font-weight: 400;
     letter-spacing: -0.45px;
     line-height: 32px;
     color: #CAD5E2;
     text-align: start;
 }
-
-.about-us-section {
+.microsoft-text {
     width: 100%;
-    margin: 100px auto;
-    max-width: 50%;
-    text-align: center;
-    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+
 }
 
 .microsoft-text-logo {
@@ -77,58 +77,49 @@ body {
 
 
 .about-us-logo {
-    display: flex;
+    display: grid;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 25px;
-
+    gap: 32px;
+   
 }
 
 .about-us-logo-img {
     width: 100%;
-    max-width: 431.5px;
-    height: 234px;
-    padding: 50px;
-    gap: 8px;
+    max-width: 430px;
+    padding: 50px 0px;
     border: 1px solid #00D5BE;
     border-radius: 16px;
-    background: linear-gradient(to top right,
-            rgba(82, 139, 139, 0.2),
-            rgba(85, 174, 170, 0.2),
+    background: linear-gradient(to top left,
+            rgba(82, 139, 139, 0.1),
+            rgba(85, 174, 170, 0.1),
             rgba(62, 183, 181, 0.2));
     box-sizing: border-box;
+    
+}
+.about-us-logo-img .logo{
+    width: 234px;
+    height: 147px;
+    
 }
 
 
-.about-us-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 50px;
-}
+
 
 .about-us-logo-text {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-
-
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 16px;
+   
 }
 
+
 .about-us-user {
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    max-width: 207.75px;
-    height: 106px;
-    background-color: rgba(255, 255, 255, 0.05);
+    max-width: 180px;
+    height: auto;
+    padding: 16px;
+     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    box-sizing: border-box;
 }
 
 
@@ -144,8 +135,8 @@ body {
 }
 
 .about-us-user p {
-     font-family: 'Inter', sans-serif;
-     font-weight: 200;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
     font-size: 14px;
     letter-spacing: -0.15px;
     margin: 0;

@@ -168,7 +168,6 @@
 .thumbnail .item::after {
     content: "";
     position: absolute;
-
     left: 14px;
     right: 14px;
     bottom: 0;
@@ -258,7 +257,7 @@
 
 .content-airport-code {
     padding: 8px 12px;
-    background-color: rgba(40, 196, 181, 0.26);
+    background-color: rgba(40, 196, 181, 0.8);
     border: 1px solid #81FBEE;
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
