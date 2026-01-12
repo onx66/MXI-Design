@@ -1,7 +1,7 @@
 header {
-    width: 100%;
-    max-width: 79%;
-    margin: 20px auto;
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 100px;
@@ -9,7 +9,6 @@ header {
     align-items: center;
     position: relative;
     z-index: 100;
-
 }
 
 .header-container {
@@ -68,4 +67,15 @@ header {
         gap: 20px;
         font-weight: bold;
     }
+    .header-container {
+    flex-direction: column;
+}
+.header-container .logo {
+   
+    margin: 10px auto;
+}
+.header-container {
+ 
+    gap: 0;
+}
 }
