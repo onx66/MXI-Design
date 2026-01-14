@@ -17,7 +17,7 @@ function Header() {
                     src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png"
                 />
 
-                {width < 600 ? (
+                {width < 620 ? (
                     <Radio />
                 ) : (
                     <ul className="menu">
