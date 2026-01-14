@@ -110,7 +110,7 @@
     display: flex;
     gap: 10px;
     top: 40%;
-    right: 14%;
+    right: 16%;
     z-index: 100;
 
 }
@@ -136,7 +136,7 @@
 .thumbnail {
     position: absolute;
     bottom: 100px;
-    right: 9%;
+    right: 12%;
     z-index: 11;
     display: flex;
     gap: 10px;
@@ -157,7 +157,6 @@
 .thumbnail .item {
     position: relative;
     width: 230px;
-
     height: 100%;
     max-height: 250px;
     filter: brightness(.5);
@@ -230,7 +229,7 @@
 .view-all-container {
     position: absolute;
     bottom: 40px;
-    right: 9%;
+    right: 12%;
     z-index: 11;
     display: inline-flex;
     width: fit-content;
@@ -290,7 +289,7 @@
 
 }
 
-@media screen and (max-width:1050px) {
+@media screen and (max-width:1080px) {
     .thumbnail {
         padding-left: 10px;
         justify-content: start;
@@ -311,36 +310,45 @@
     }
 
     .arrows {
-        top: 25%;
+       opacity: 0;
     }
 
 }
 
 @media screen and (max-width:760px) {
 
-    .slider .list .item .content h1 {
+    .slider .list .item .content  {
 
-        font-size: 49px;
-        font-weight: 700;
-        line-height: 73px;
-
+     top: 30%;
     }
 
 
-    .slider .list .item .content .subtitle {
-        font-weight: 200;
-    }
+  
 
-
-    .slider .list .item .content p:nth-child(3) {
-
-        font-size: 17px;
-
-        font-weight: lighter;
-    }
+   
 
 }
 
 @media screen and (max-width:600px) {
+        .thumbnail {
+        padding-left: 33px;
+    }
+     .slider {
+        margin-top: -205px;
+    }
+    .slider .list .item .content {
+   
+    top: 27%;
     
+
+}
+
+     .slider .list .item .content h1 {
+
+        font-size: 39px;
+        font-weight: 500;
+        line-height: 53px;
+
+    }
+
 }
