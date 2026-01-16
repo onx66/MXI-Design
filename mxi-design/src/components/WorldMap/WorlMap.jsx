@@ -29,7 +29,7 @@ function WorldMap() {
       center: [0, 20],
       zoom: 1,
       minZoom: 2,
-      maxZoom: 5,
+      maxZoom: 10,
       pitch: 0,
       bearing: 0,
       renderWorldCopies: false,

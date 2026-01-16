@@ -1,5 +1,7 @@
+import FlightSimulator from "../../assets/svg/FlightSimulator";
 import "./AboutUs.css";
-
+import xplane from "../../assets/images/xplane-software.png"
+import mfs from "../../assets/images/microsoft-flight-simulator.png"
 
 
 function AboutUs() {
@@ -17,8 +19,8 @@ function AboutUs() {
                         experience by bringing real-world airports to life
                         with accuracy, detail, and immersion.</p>
                     <div className="microsoft-text">
-                        <div className="microsoft-text-logo">Flight Simulator</div>
-                        <div className="microsoft-text-logo">Xplane</div>
+                        <div className="microsoft-text-logo "> <img src={mfs} alt="" /></div>
+                        <div className="microsoft-text-logo"><img src={xplane} alt="" /></div>
                     </div>
                 </div>
                 <div className="about-us-logo">
