@@ -1,0 +1,73 @@
+.world-map {
+  width: 100%;
+  height: 730px;
+}
+
+.custom-popup .maplibregl-popup-content {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.custom-popup .maplibregl-popup-tip {
+  display: none;
+}
+
+
+.airport-popup {
+  display: flex;
+  gap: 16px;
+  width: 210px;
+  padding: 24px;
+  background: linear-gradient(135deg, #0b1e36, #081425);
+  border-radius: 5px 18px 18px 18px;
+  border: 2px solid #18e0d0;
+  text-align: start;
+}
+
+
+.popup-dot {
+  margin-top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fbbf24;
+  flex-shrink: 0;
+}
+
+.popup-title {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.popup-subtitle {
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  color: #99a1af;
+}
+
+.popup-code {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #fbbf24;
+}
+
+
+.circle-marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.35);
+  cursor: pointer;
+}
+
+
+.circle-marker.blue {
+  background-color: #1ec8ff;
+  box-shadow: 0 0 0 3px rgba(30, 200, 255, 0.35);
+}
