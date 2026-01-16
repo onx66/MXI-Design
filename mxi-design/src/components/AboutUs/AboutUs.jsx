@@ -1,4 +1,4 @@
-import FlightSimulator from "../../assets/svg/FlightSimulator";
+
 import "./AboutUs.css";
 import xplane from "../../assets/images/xplane-software.png"
 import mfs from "../../assets/images/microsoft-flight-simulator.png"
