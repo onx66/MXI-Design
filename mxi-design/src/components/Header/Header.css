@@ -1,6 +1,6 @@
 header {
     width: 1200px;
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -53,7 +53,13 @@ header {
     justify-self: end;
 
 }
-
+@media screen and (max-width:1050px) {
+   
+.header-container .menu {
+    gap: 30px; 
+}
+    
+}
 @media screen and (max-width:940px) {
     header {
         display: flex;
@@ -75,7 +81,7 @@ header {
     margin: 10px auto;
 }
 .header-container {
- 
     gap: 0;
 }
+
 }

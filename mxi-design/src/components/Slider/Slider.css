@@ -148,6 +148,7 @@
     overflow: auto;
     justify-content: end;
 
+
 }
 
 .thumbnail::-webkit-scrollbar {
@@ -159,12 +160,13 @@
     width: 230px;
     height: 100%;
     max-height: 250px;
-    filter: brightness(.5);
+    filter: brightness(0.3);
     transition: .5s;
     flex-shrink: 0;
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
+   
 }
 
 .thumbnail .item::after {
@@ -310,40 +312,42 @@
     }
 
     .arrows {
-       opacity: 0;
+        opacity: 0;
     }
 
 }
 
 @media screen and (max-width:760px) {
 
-    .slider .list .item .content  {
+    .slider .list .item .content {
 
-     top: 30%;
+        top: 30%;
     }
 
 
-  
 
-   
+
+
 
 }
 
 @media screen and (max-width:600px) {
-        .thumbnail {
+    .thumbnail {
         padding-left: 33px;
     }
-     .slider {
+
+    .slider {
         margin-top: -205px;
     }
+
     .slider .list .item .content {
-   
-    top: 27%;
-    
 
-}
+        top: 27%;
 
-     .slider .list .item .content h1 {
+
+    }
+
+    .slider .list .item .content h1 {
 
         font-size: 39px;
         font-weight: 500;
