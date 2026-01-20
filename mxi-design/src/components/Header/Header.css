@@ -1,6 +1,6 @@
 header {
-    width: 1200px;
-    max-width: 90%;
+    width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -53,13 +53,18 @@ header {
     justify-self: end;
 
 }
+
 @media screen and (max-width:1050px) {
-   
-.header-container .menu {
-    gap: 30px; 
+    header {
+        max-width: 90%;
+    }
+
+    .header-container .menu {
+        gap: 30px;
+    }
+
 }
-    
-}
+
 @media screen and (max-width:940px) {
     header {
         display: flex;
@@ -73,15 +78,18 @@ header {
         gap: 20px;
         font-weight: bold;
     }
+
     .header-container {
-    flex-direction: column;
-}
-.header-container .logo {
-   
-    margin: 10px auto;
-}
-.header-container {
-    gap: 0;
-}
+        flex-direction: column;
+    }
+
+    .header-container .logo {
+
+        margin: 10px auto;
+    }
+
+    .header-container {
+        gap: 0;
+    }
 
 }
