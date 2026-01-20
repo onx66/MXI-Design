@@ -2,7 +2,7 @@ import "./Footer.css";
 
 function Footer() {
     return (
-        <>
+        <div className="footer-content">
             <div className="footer">
                 <div className="footer-text">
                     <h2>© MXI Design, 2025</h2>
@@ -63,12 +63,10 @@ function Footer() {
                             />
                         </svg>
                     </a>
-
-
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 

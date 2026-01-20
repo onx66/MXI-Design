@@ -23,7 +23,6 @@ function Slider() {
       <div className="list">
         {sliderData.map((item, index) => {
           const titleParts = item.title?.split(" ") || [];
-
           return (
             <div
               key={index}
@@ -73,7 +72,6 @@ function Slider() {
               <div className="content-airport-name">
                 {(() => {
                   const words = item.title.split(" ");
-
                   return (
                     <h2>
                       <span className="title-top">{words[0]}</span>
