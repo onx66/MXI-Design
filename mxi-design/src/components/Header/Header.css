@@ -1,11 +1,12 @@
 header {
     width: 100%;
-    max-width: 80%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 100px;
-    justify-content: center;
+    max-width: 1300px;
+    margin: 20px auto;
+    display: flex;
+    gap: 20px;
+  /*  grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: 100px; */
+    justify-content: space-between;
     align-items: center;
     position: relative;
     z-index: 100;
@@ -52,6 +53,24 @@ header {
 .contact-us-button {
     justify-self: end;
 
+}
+
+.header-search {
+    flex: 1;
+    max-width: 320px;
+}
+
+.header-search input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.header-search input:focus {
+    outline: none;
+    border-color: #375b71;
 }
 
 @media screen and (max-width:1050px) {

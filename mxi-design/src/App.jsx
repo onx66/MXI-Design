@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <>
-     <ProductsListPage />
+      <HomePage />
     </>
   );
 }
