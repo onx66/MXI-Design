@@ -5,6 +5,7 @@ import ProductsButton from "../ProductsButton/ProductsButton";
 import Radio from "../Radio/Radio";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import "./Header.css";
+import SearchInput from "../SearchInput/SearchInput";
 
 function Header() {
     const width = useWindowWidth();
@@ -28,6 +29,10 @@ function Header() {
                         <li>About Us</li>
                     </ul>
                 )}
+            </div>
+
+            <div className="header-search">
+                <SearchInput />
             </div>
 
             <div className="contact-us-button">

@@ -10,6 +10,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    gap: 50px;
 }
 
 .products-list-content {
@@ -20,7 +21,8 @@ body {
 .products-list-content-card{
     display: flex;
     gap: 48px;
-    max-width: 1300px;
+    max-width: 1150px;
+    max-height: 300px;
     margin: 60px auto;
     padding: 20px;
     background: linear-gradient(135deg, #0b1430, #070e1f);
@@ -47,22 +49,19 @@ body {
 
 .product-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .product-code {
-    font-size: 46px;
+    font-size: 35px;
     font-weight: 700;
     color: #ffb400;
 }
 
 .product-title {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     color: #ffffff;
-    margin-bottom: 18px;
+    
 }
 
 .product-description {
@@ -75,10 +74,13 @@ body {
 .product-platforms {
     display: flex;
     gap: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
 }
 
 .platform {
+    width: 100%;
+    max-width: 80px;
+    text-align: center;
     padding: 8px 18px;
     border-radius: 20px;
     font-size: 14px;
@@ -93,4 +95,19 @@ body {
     background: linear-gradient(to right,
             rgba(0, 170, 255, 0.6),
             rgba(0, 170, 255, 0.1));
+}
+@media screen and (max-width:940px) {
+    .product-code {
+    font-size: 30px;
+    
+}
+.product-title {
+    font-size: 20px;
+    
+    
+}
+.product-description {
+    font-size: 12px;
+   
+}
 }
