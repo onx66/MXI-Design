@@ -92,7 +92,7 @@ function Slider() {
 
       {/* VIEW ALL */}
       <div className="view-all-container">
-        <ViewAllButton />
+       
       </div>
     </div>
   );
