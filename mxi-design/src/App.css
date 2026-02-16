@@ -8,4 +8,6 @@ body {
             rgba(22, 36, 86, 1),
             rgba(2, 47, 46, 1));
     color: #eee;
+     width: 100%;
+    overflow-x: hidden;
 }

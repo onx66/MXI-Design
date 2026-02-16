@@ -1,23 +1,22 @@
-.footer-content{
+.footer-content {
     width: 100%;
     background: #050D21;
-    display: flex;
-   
+
+
 }
 
 
 
 .footer {
     width: 100%;
-    max-width: 75%;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-     margin: 0 auto;
-    
+    margin: 0 auto;
 }
 
-.footer-text h2{
+.footer-text h2 {
     font-size: 16px;
 }
 
