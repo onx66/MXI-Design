@@ -1,180 +1,346 @@
-/* Container */
-.getaround-container {
-  position: relative;
-  display: inline-block;
+/* Products Dropdown Container */
+.products-dropdown-container {
+    position: relative;
+    display: inline-block;
 }
 
-/* Main Button */
-.getaround-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0px;
-  background: linear-gradient(135deg, transparent);
-  border-radius: 10px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 10;
-  margin: 0;
-  
+/* Trigger Button */
+.products-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.25s ease;
 }
 
-.getaround-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  filter: blur(15px);
-  opacity: 0;
-  z-index: -1;
+.products-dropdown-trigger:hover,
+.products-dropdown-trigger.active {
+    color: rgba(255, 255, 255, 1);
 }
 
-.getaround-button::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(transparent);
-  transform: scale(0);
-  z-index: -1;
+.products-dropdown-text {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
 }
 
-.getaround-button:hover::before {
-  opacity: 1;
+.products-dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
 }
 
-.getaround-button:hover::after {
-  transform: scale(1);
+.products-dropdown-arrow.rotated {
+    transform: rotate(180deg);
 }
 
-.getaround-button:active {
-  transform: translateY(-2px);
-
+/* Dropdown Menu */
+.products-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    min-width: 200px;
+    background: rgba(15, 15, 25, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow: hidden;
 }
 
-/* Button Text */
-.getaround-text {
-  font-size: 16px;
-  font-weight: 300;
-  transition: letter-spacing 0.3s ease;
+.products-dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-30%) scale(1);
 }
 
-.getaround-button:hover .getaround-text {
-  letter-spacing: 1px;
+/* Arrow indicator */
+.products-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(15, 15, 25, 0.98);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Button Icon */
-.getaround-icon {
-  width: 20px;
-  height: 20px;
-  fill: (119, 224, 242, 0.4);
-  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+/* Dropdown Header */
+.products-dropdown-header {
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.getaround-button:hover .getaround-icon {
-  transform: rotate(360deg);
+.products-dropdown-header span {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
 }
 
-/* Tooltip */
-.getaround-tooltip {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-  background: transparent;
-  border: 1px solid;
-  border-color: white;
-  border-radius: 10px;
-  padding: 10px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 100;
-  margin-top: 12px;
-  backdrop-filter: blur(10px);
+/* Options Container */
+.products-dropdown-options {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.getaround-container:hover .getaround-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) scale(1);
+/* Option Button */
+.products-dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 100%;
+    text-align: left;
 }
 
-.getaround-tooltip::before {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 0 5px 5px 5px;
-  border-style: solid;
-  border-color: transparent transparent rgba(255, 255, 255, 0.95) transparent;
+.products-dropdown-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
 }
 
-/* Icons Container */
-.getaround-icons {
-  display: flex;
-  gap: 16px;
-  background-color: transparent;
+.products-dropdown-option:active {
+    transform: translateX(4px) scale(0.98);
 }
 
-/* Icon Buttons */
-.getaround-icon-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 108px;
-  cursor: pointer;
-  border-radius: 10px;
-  background: transparent;
-  border: 1px solid;
-  color: white;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  
+/* Option Icon */
+.option-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
 }
 
-
-.getaround-icon-btn:hover {
-  transform: translateY(-1px) scale(1.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  background-color: rgba(255, 255, 255, 0.2);
+.option-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
-.getaround-icon-btn:active {
-  transform: translateY(-1px) scale(1.05);
+.msfs-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.3));
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
 }
 
+.xplane-icon {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.3));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+}
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .getaround-button {
-    padding: 12px 24px;
-  }
+.products-dropdown-option:hover .msfs-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.4));
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
 
-  .getaround-text {
-    font-size: 16px;
-  }
+.products-dropdown-option:hover .xplane-icon {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(22, 163, 74, 0.4));
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
 
-  .getaround-tooltip {
-    padding: 12px;
-  }
+/* Option Content */
+.option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 
-  .getaround-icons {
-    gap: 12px;
-  }
+.option-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
 
-  .getaround-icon-btn {
-    width: 44px;
-    height: 44px;
-  }
+.option-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
 
-  .getaround-icon-btn svg {
-    width: 20px;
-    height: 20px;
-  }
+/* Responsive - Tablet */
+@media screen and (max-width: 1024px) {
+    .products-dropdown-text {
+        font-size: 14px;
+    }
+
+    .products-dropdown-menu {
+        min-width: 200px;
+    }
+
+    .option-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .option-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+    .products-dropdown-option {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .option-title {
+        font-size: 13px;
+    }
+
+    .option-subtitle {
+        font-size: 10px;
+    }
+
+    .products-dropdown-header {
+        padding: 10px 14px 8px;
+    }
+
+    .products-dropdown-header span {
+        font-size: 10px;
+    }
+
+    .products-dropdown-options {
+        padding: 6px;
+        gap: 4px;
+    }
+}
+
+/* Responsive - Mobile */
+@media screen and (max-width: 576px) {
+    .products-dropdown-container {
+        width: 100%;
+    }
+
+    .products-dropdown-trigger {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .products-dropdown-menu {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        min-width: 100%;
+        border-radius: 24px 24px 0 0;
+        max-height: 60vh;
+    }
+
+    .products-dropdown-menu.open {
+        transform: translateY(0);
+    }
+
+    .products-dropdown-menu::before {
+        display: none;
+    }
+
+    .products-dropdown-header {
+        padding: 20px 20px 14px;
+        text-align: center;
+    }
+
+    .products-dropdown-header::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin: 0 auto 16px;
+    }
+
+    .products-dropdown-header span {
+        font-size: 12px;
+    }
+
+    .products-dropdown-options {
+        padding: 12px 16px 32px;
+        gap: 10px;
+    }
+
+    .products-dropdown-option {
+        padding: 18px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+    }
+
+    .products-dropdown-option:hover {
+        transform: none;
+    }
+
+    .products-dropdown-option:active {
+        transform: scale(0.98);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .option-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .option-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .option-title {
+        font-size: 16px;
+    }
+
+    .option-subtitle {
+        font-size: 13px;
+    }
+}
+
+/* Overlay for mobile */
+.products-dropdown-overlay {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .products-dropdown-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .products-dropdown-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+    }
 }

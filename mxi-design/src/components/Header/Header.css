@@ -176,6 +176,8 @@ header {
 /* Contact Us Button */
 .contact-us-button {
     flex-shrink: 0;
+     position: relative;
+    z-index: 50;
 }
 
 /* Hamburger Button */
