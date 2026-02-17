@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ContactUsButton from "../ContactUsButton/ContactUsButton";
 import ProductsButton from "../ProductsButton/ProductsButton";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
@@ -11,6 +12,7 @@ function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { searchQuery, setSearchQuery, isSearchFocused, setIsSearchFocused } = useSearch();
     const searchRef = useRef(null);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(prev => !prev); // safer
@@ -18,8 +20,10 @@ function Header() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-
-
+    };
+    const goToHome = () => {
+        navigate("/");
+        setIsMenuOpen(false);
     };
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
@@ -58,7 +62,7 @@ function Header() {
             {width >= 768 && (
                 <nav className="header-nav" data-testid="desktop-nav">
                     <ul className="menu">
-                        <li data-testid="menu-home">Home</li>
+                        <li data-testid="menu-home" onClick={goToHome}>Home</li>
                         <li data-testid="menu-products">
                             <ProductsButton />
                         </li>
