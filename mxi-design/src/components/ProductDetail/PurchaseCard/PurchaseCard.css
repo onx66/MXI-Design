@@ -1,0 +1,59 @@
+.purchase-card {
+   background: linear-gradient(90deg,
+      #0f172b 0%,
+      #020618 100%);
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 100px;
+}
+
+.purchase-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.current {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.currency {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg,
+      #009689 0%,
+      #0092b8 100%);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.requirement {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 20px;
+  line-height: 1.5;
+}

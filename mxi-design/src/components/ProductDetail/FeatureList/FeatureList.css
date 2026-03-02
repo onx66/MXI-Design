@@ -1,0 +1,37 @@
+.feature-section {
+  margin-top: 40px;
+}
+
+.feature-section h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+}
+
+.feature-item {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+  position: relative;
+  padding-left: 24px;
+}
+
+.feature-item::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #0bb3a7;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
