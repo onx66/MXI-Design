@@ -1,5 +1,5 @@
 
-import sabiha from "../assets/images/istanbul-airport.jpg";
+import sabiha from "../assets/images/sabiha-gökçen-airport.jpg";
 import karpathos from "../assets/images/karpothos-airport.jpg";
 import kaunas from "../assets/images/kaunas-airport.jpg";
 import örebro from "../assets/images/örebro-airport.jpg";

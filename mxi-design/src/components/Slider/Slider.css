@@ -135,7 +135,7 @@
 
 .thumbnail {
     position: absolute;
-    bottom: 100px;
+    bottom: 75px;
     right: 12%;
     z-index: 11;
     display: flex;
@@ -323,12 +323,6 @@
 
         top: 30%;
     }
-
-
-
-
-
-
 }
 
 @media screen and (max-width:600px) {

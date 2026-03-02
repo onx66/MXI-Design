@@ -25,6 +25,7 @@ function Header() {
         navigate("/");
         setIsMenuOpen(false);
     };
+    
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
         ? sliderData.filter((product) => {
