@@ -1,0 +1,29 @@
+/* VideoSection.css */
+
+.video-section {
+    padding: 30px 0;
+}
+
+.video-section h1 {
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 56.25%;
+    /* 16:9 */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
