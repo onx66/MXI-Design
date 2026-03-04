@@ -4,6 +4,10 @@ import PurchaseCard from "./PurchaseCard/PurchaseCard.jsx";
 import FeatureList from "./FeatureList/FeatureList.jsx";
 import Header from "../Header/Header.jsx";
 import ScreenShotsSection from "./ScreenShotsSection/ScreenShotsSection.jsx";
+import VideoSection from "./VideoSection/VideoSection.jsx";
+import Footer from "../Footer/Footer.jsx";
+import mfs from "../../assets/images/microsoft-flight-simulator.png"
+
 
 function ProductDetail({ index = 0 }) {
   const product = sliderData[index];
@@ -12,7 +16,6 @@ function ProductDetail({ index = 0 }) {
     <section className="product-detail">
       <Header />
       <div className="hero">
-
         <img src={product.img} alt={product.title} className="hero-bg" />
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -30,16 +33,13 @@ function ProductDetail({ index = 0 }) {
           </h1>
         </div>
       </div>
-
       <div className="detail-container">
         <div className="left">
           <div className="discount-banner">
             This product is discounted by <strong>40%</strong> with the
             OrbX End of Year Sale 2025 (40%).
           </div>
-
           <p className="description">{product.desc}</p>
-
           <FeatureList />
         </div>
         <div className="right">
@@ -47,9 +47,31 @@ function ProductDetail({ index = 0 }) {
         </div>
       </div>
       <div className="screen-shots-container">
-          <ScreenShotsSection />
+        <ScreenShotsSection />
+      </div>
+      <div className="screen-shots-container">
+        <VideoSection />
+      </div>
+      <div className="compatibility">
+        <h1>Compatibility</h1>
+        <div className="general">
+          <h2>General</h2>
+          <p>The download size of this product is 1.31 GB. It uses 3.44 GB when installed.</p>
         </div>
-      
+        <div className="support-simulation">
+          <h2>Supported Simulators </h2>
+          <p>This product is compatible with the following simulators:</p>
+          <div className="support-simulation-platform">
+            <img src={mfs} alt="" />
+            <img src={mfs} alt="" />
+          </div>
+        </div>
+        <div className="operating-system">
+          <h2>Supported Operating Systems</h2>
+          <p>This product is compatible with the following operatin systems:</p>
+        </div>
+      </div>
+      <Footer />
     </section>
   );
 };

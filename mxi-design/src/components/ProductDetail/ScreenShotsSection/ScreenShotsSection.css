@@ -1,11 +1,11 @@
 .screenshots-section {
-  padding: 80px 0;
+  padding: 30px 0;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.screenshots-section h2 {
-  font-size: 32px;
+.screenshots-section h1 {
+  font-size: 30px;
   margin-bottom: 40px;
 }
 

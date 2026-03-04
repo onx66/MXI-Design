@@ -2,24 +2,28 @@
   margin-top: 40px;
 }
 
-.feature-section h2 {
-  font-size: 26px;
+.feature-section h1 {
+  font-size: 30px;
   font-weight: 600;
   margin-bottom: 32px;
 }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px 40px;
+  max-width: 990px;
 }
 
 .feature-item {
-  font-size: 15px;
-  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
   opacity: 0.9;
   position: relative;
   padding-left: 24px;
+
 }
 
 .feature-item::before {

@@ -40,7 +40,7 @@ function WorldMap() {
     map.on("load", () => {
       const layers = map.getStyle().layers;
 
-      
+
       layers.forEach((layer) => {
         const id = layer.id;
         if (
@@ -109,7 +109,7 @@ function WorldMap() {
       const canvas = map.getCanvas();
 
       canvas.addEventListener("contextmenu", (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
       });
 
       canvas.addEventListener("mousedown", (e) => {

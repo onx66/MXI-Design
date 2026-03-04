@@ -1,5 +1,6 @@
 .purchase-card {
-   background: linear-gradient(90deg,
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(90deg,
       #0f172b 0%,
       #020618 100%);
   padding: 32px;
@@ -10,8 +11,9 @@
 }
 
 .purchase-card h3 {
-  font-size: 20px;
-  font-weight: 600;
+
+  font-size: 18px;
+  font-weight: 500;
   margin-bottom: 24px;
 }
 
@@ -32,8 +34,14 @@
   opacity: 0.6;
 }
 
+.product-marketing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 50px;
+}
+
 .add-to-cart {
-  width: 100%;
   padding: 16px;
   border-radius: 10px;
   border: none;
@@ -56,4 +64,13 @@
   opacity: 0.6;
   margin-top: 20px;
   line-height: 1.5;
+}
+
+.price-other {
+  color: #00D5BE;
+
+}
+
+.currency-other {
+  padding-right: 15px;
 }
