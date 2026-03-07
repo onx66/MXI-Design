@@ -37,5 +37,33 @@
 @media (max-width: 768px) {
   .feature-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-section h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .feature-item {
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-section {
+    margin-top: 24px;
+  }
+
+  .feature-section h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .feature-item {
+    font-size: 13px;
+    line-height: 20px;
   }
 }

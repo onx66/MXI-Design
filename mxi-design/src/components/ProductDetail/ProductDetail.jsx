@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 import { sliderData } from "../../data/sliderData.js";
 import "./ProductDetail.css";
 import PurchaseCard from "./PurchaseCard/PurchaseCard.jsx";
@@ -9,9 +11,10 @@ import Footer from "../Footer/Footer.jsx";
 import mfs from "../../assets/images/microsoft-flight-simulator.png"
 
 
-function ProductDetail({ index = 0 }) {
-  const product = sliderData[index];
-
+function ProductDetail() {
+  const { id } = useParams();
+  const productIndex = parseInt(id) || 0;
+  const product = sliderData[productIndex] || sliderData[0];
   return (
     <section className="product-detail">
       <Header />
@@ -40,7 +43,7 @@ function ProductDetail({ index = 0 }) {
             OrbX End of Year Sale 2025 (40%).
           </div>
           <p className="description">{product.desc}</p>
-          <FeatureList />
+         <FeatureList features={product.features} />
         </div>
         <div className="right">
           <PurchaseCard />
