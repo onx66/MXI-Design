@@ -4,6 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import "./WorldMap.css";
 import { sliderData } from "../../data/sliderData";
 
+
 const createPopupHTML = (item) => `
   <div class="airport-popup">
     <div class="popup-dot"></div>

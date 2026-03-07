@@ -74,3 +74,79 @@
 .currency-other {
   padding-right: 15px;
 }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .purchase-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .purchase-card {
+    padding: 24px;
+  }
+
+  .purchase-card h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .current {
+    font-size: 28px;
+  }
+
+  .product-marketing {
+    margin-top: 32px;
+    gap: 8px;
+  }
+
+  .add-to-cart {
+    padding: 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .purchase-card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .purchase-card h3 {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .current {
+    font-size: 24px;
+  }
+
+  .currency {
+    font-size: 12px;
+  }
+
+  .price {
+    margin-bottom: 20px;
+  }
+
+  .product-marketing {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+  }
+
+  .add-to-cart {
+    padding: 12px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .requirement {
+    font-size: 12px;
+    margin-top: 16px;
+  }
+
+  .price-other {
+    font-size: 13px;
+  }
+}

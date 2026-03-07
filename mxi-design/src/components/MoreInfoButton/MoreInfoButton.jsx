@@ -2,13 +2,13 @@ import "./MoreInfoButton.css";
 import { useNavigate } from "react-router-dom";
 
 
-function MoreInfoButton() {
+function MoreInfoButton({ productId = 0 }) {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/product-detail");
+       navigate(`/product-detail/${productId}`);
     };
     return (
-        <button className="more-info-button" onClick={handleClick}>
+         <button className="more-info-button" onClick={handleClick} data-testid="learn-more-button">
             <span>Learn More</span>
         </button>
     )

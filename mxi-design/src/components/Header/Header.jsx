@@ -129,14 +129,15 @@ function Header() {
                                         <span>{searchResults.length} sonuç bulundu</span>
                                     </div>
                                     <ul className="search-results-list">
-                                        {searchResults.map((product) => (
+                                        {searchResults.map((product, index) => (
                                             <li
                                                 key={product.code}
                                                 className="search-result-item"
                                                 data-testid={`search-result-${product.code}`}
                                                 onClick={() => {
                                                     setIsSearchFocused(false);
-                                                    // İleride tıklama ile detay sayfasına yönlendirme eklenebilir
+                                                     setSearchQuery("");
+                                                    navigate(`/product-detail/${product.id !== undefined ? product.id : index}`);
                                                 }}
                                             >
                                                 <img
@@ -144,7 +145,7 @@ function Header() {
                                                     alt={product.title}
                                                     className="search-result-img"
                                                 />
-                                                <div className="search-result-info\">
+                                                <div className="search-result-info">
                                                     <span className="search-result-code">{product.code}</span>
                                                     <span className="search-result-title">{product.title}</span>
                                                     <span className="search-result-subtitle">{product.subtitle}</span>

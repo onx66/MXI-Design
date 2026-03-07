@@ -8,7 +8,7 @@ import ViewAllButton from "../ViewAllButton/ViewAllButton.jsx";
 function Slider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = sliderData.length;
-  
+
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % total);
@@ -17,7 +17,7 @@ function Slider() {
   const prevSlide = () => {
     setActiveIndex((prev) => (prev - 1 + total) % total);
   };
- 
+
 
   return (
     <div className="slider">
@@ -50,7 +50,7 @@ function Slider() {
                 )}
 
                 <p>{item.desc}</p>
-                <MoreInfoButton  />
+                <MoreInfoButton productId={index} />
               </div>
             </div>
           );

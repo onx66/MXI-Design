@@ -25,7 +25,7 @@ export default function App() {
           <Route path="/products" element={<ProductsListPage />} />
           <Route path="/products/:category" element={<ProductsListPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/product-detail" element={<ProductDetail />} />
+          <Route path="/product-detail/:id" element={<ProductDetail />} />
         </Routes>
       </SearchProvider>
     </BrowserRouter>
