@@ -43,7 +43,7 @@ function ProductDetail() {
             OrbX End of Year Sale 2025 (40%).
           </div>
           <p className="description">{product.desc}</p>
-         <FeatureList features={product.features} />
+          <FeatureList features={product.features} />
         </div>
         <div className="right">
           <PurchaseCard />
@@ -73,7 +73,39 @@ function ProductDetail() {
           <h2>Supported Operating Systems</h2>
           <p>This product is compatible with the following operatin systems:</p>
         </div>
+         {/* Location Map Section */}
+      <div className="location-section">
+        <h2>Location</h2>
+        <p className="location-subtitle">{product.title} {product.subtitle} - {product.code}</p>
+        <div className="map-container" data-testid="google-map">
+          <iframe
+            src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50000!2d${product.lng}!3d${product.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2str!4v1234567890`}
+            width="100%"
+            height="450"
+            style={{ border: 0, borderRadius: '16px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title={`${product.title} Location Map`}
+          />
+        </div>
+        <div className="coordinates-info">
+          <div className="coord-item">
+            <span className="coord-label">Latitude</span>
+            <span className="coord-value">{product.lat}°</span>
+          </div>
+          <div className="coord-item">
+            <span className="coord-label">Longitude</span>
+            <span className="coord-value">{product.lng}°</span>
+          </div>
+          <div className="coord-item">
+            <span className="coord-label">ICAO Code</span>
+            <span className="coord-value">{product.code}</span>
+          </div>
+        </div>
       </div>
+      </div>
+     
       <Footer />
     </section>
   );

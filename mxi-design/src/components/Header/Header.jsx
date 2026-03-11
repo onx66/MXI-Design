@@ -25,7 +25,7 @@ function Header() {
         navigate("/");
         setIsMenuOpen(false);
     };
-    
+
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
         ? sliderData.filter((product) => {
@@ -136,7 +136,7 @@ function Header() {
                                                 data-testid={`search-result-${product.code}`}
                                                 onClick={() => {
                                                     setIsSearchFocused(false);
-                                                     setSearchQuery("");
+                                                    setSearchQuery("");
                                                     navigate(`/product-detail/${product.id !== undefined ? product.id : index}`);
                                                 }}
                                             >
@@ -197,7 +197,7 @@ function Header() {
                     data-testid="mobile-nav"
                 >
                     <ul className="mobile-menu">
-                        <li data-testid="mobile-menu-home">Home</li>
+                        <li data-testid="mobile-menu-home" onClick={goToHome}>Home</li>
                         <li data-testid="mobile-menu-products">
                             <ProductsButton />
                         </li>
