@@ -135,7 +135,6 @@
 
 .compatibility h1 {
     font-size: 32px;
-    margin-bottom: 40px;
 }
 
 .support-simulation h2 {
@@ -159,6 +158,69 @@
 
 .support-simulation {
     padding-bottom: 20px;
+}
+
+/* Location Map Section */
+.location-section {
+    max-width: 1260px;
+    margin: 42px auto;
+    box-sizing: border-box;
+   
+    
+}
+
+.location-section h1 {
+    font-size: 32px;
+}
+
+.location-subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.map-container iframe {
+    display: block;
+    height: 280px;
+}
+
+.coordinates-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.coord-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.coord-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.coord-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #18e0d0;
 }
 
 
