@@ -8,7 +8,7 @@ import Header from "../Header/Header.jsx";
 import ScreenShotsSection from "./ScreenShotsSection/ScreenShotsSection.jsx";
 import VideoSection from "./VideoSection/VideoSection.jsx";
 import Footer from "../Footer/Footer.jsx";
-import mfs from "../../assets/images/microsoft-flight-simulator.png"
+
 
 
 function ProductDetail() {
@@ -46,32 +46,33 @@ function ProductDetail() {
           <FeatureList features={product.features} />
         </div>
         <div className="right">
-          <PurchaseCard />
+          <PurchaseCard pricing={product.pricing} />
         </div>
       </div>
       <div className="screen-shots-container">
         <ScreenShotsSection />
       </div>
       <div className="screen-shots-container">
-        <VideoSection />
+        <VideoSection video={product.videourl} />
       </div>
       <div className="compatibility">
         <h1>Compatibility</h1>
         <div className="general">
           <h2>General</h2>
-          <p>The download size of this product is 1.31 GB. It uses 3.44 GB when installed.</p>
+          <p>{product.generalDesc}</p>
         </div>
         <div className="support-simulation">
           <h2>Supported Simulators </h2>
           <p>This product is compatible with the following simulators:</p>
           <div className="support-simulation-platform">
-            <img src={mfs} alt="" />
-            <img src={mfs} alt="" />
+            <span className="mfs-desc">Microsoft Flight Simulator</span>
+            <span className="mfs-desc">Microsoft Flight Simulator 2024</span>
           </div>
         </div>
         <div className="operating-system">
           <h2>Supported Operating Systems</h2>
           <p>This product is compatible with the following operatin systems:</p>
+          <p>Windows</p>
         </div>
          {/* Location Map Section */}
       <div className="location-section">
