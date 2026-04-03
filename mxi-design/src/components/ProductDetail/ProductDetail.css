@@ -143,7 +143,7 @@
 
 .support-simulation-platform {
     display: flex;
-    gap: 80px;
+    gap: 40px;
     margin-top: 20px;
 }
 
@@ -165,8 +165,8 @@
     max-width: 1260px;
     margin: 42px auto;
     box-sizing: border-box;
-   
-    
+
+
 }
 
 .location-section h1 {
@@ -181,7 +181,6 @@
 
 .map-container {
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
@@ -221,6 +220,16 @@
     font-size: 14px;
     font-weight: 600;
     color: #18e0d0;
+}
+
+.compatibility .support-simulation .support-simulation-platform .mfs-desc {
+    border: 1px solid #009689;
+    background: linear-gradient(90deg,
+            #009689 0%,
+            #0092b8 100%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
 }
 
 

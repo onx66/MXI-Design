@@ -11,7 +11,7 @@ import örebro from "../assets/images/örebro-airport.jpg";
 
 export const sliderData = [
   {
-    id:0,
+    id: 0,
     img: sabiha,
     code: "LTFJ",
     title: "Istanbul Sabiha Gökçen",
@@ -22,6 +22,16 @@ export const sliderData = [
     lat: 40.8986,
     lng: 29.3092,
     color: "#FFD84D",
+    videourl: "https://www.youtube.com/embed/UPQUECGO4EA?start=2",
+    pricing: {
+      main: { amount: 16.49, currency: "USD" },
+      others: [
+        { amount: 20.99, currency: "EUR" },
+        { amount: 23.0, currency: "AUD" },
+        { amount: 12.2, currency: "GBP" }
+      ]
+    },
+    generalDesc: "The download size of this product is 2.36 GB. It uses 5.74 GB when installed.",
     features: [
       "Real world replica of Istanbul Sabiha Gökçen Airport",
       "Parallax windows for all airport buildings around",
@@ -38,7 +48,7 @@ export const sliderData = [
     ]
   },
   {
-    id:1,
+    id: 1,
     img: karpathos,
     code: "LGKP",
     title: "Karpathos",
@@ -46,10 +56,20 @@ export const sliderData = [
     desc:
       "Karpathos Airport (IATA: AOK, ICAO: LGKP) is an airport on the island of Karpathos, Greece.",
     welcomeText: "Welcome to Karpathos!",
-     lat: 35.4214,
+    lat: 35.4214,
     lng: 27.1460,
     color: "#FFD84D",
-     features: [
+    videourl: "https://www.youtube.com/watch?v=pZGxBDjimO8",
+    pricing: {
+      main: { amount: 16.49, currency: "USD" },
+      others: [
+        { amount: 20.99, currency: "EUR" },
+        { amount: 23.0, currency: "AUD" },
+        { amount: 12.2, currency: "GBP" }
+      ]
+    },
+    generalDesc: "The download size of this product is 857.25 MB. It uses 1.81 GB when installed.",
+    features: [
       "Authentic recreation of Karpathos Island Airport",
       "Stunning Aegean Sea surroundings",
       "Custom Mediterranean vegetation",
@@ -65,7 +85,7 @@ export const sliderData = [
     ]
   },
   {
-    id:2,
+    id: 2,
     img: kaunas,
     code: "EYKA",
     title: "Kaunas",
@@ -73,10 +93,20 @@ export const sliderData = [
     desc:
       "Kaunas Airport is the second busiest civil airport in Lithuania after Vilnius Airport.",
     welcomeText: "Welcome to Kaunas!",
-     lat: 54.9639,
+    lat: 54.9639,
     lng: 24.0848,
     color: "#FFD84D",
-     features: [
+    videourl: "https://www.youtube.com/watch?v=Y049UX3y63o&t=4s",
+    pricing: {
+      main: { amount: 16.49, currency: "USD" },
+      others: [
+        { amount: 20.99, currency: "EUR" },
+        { amount: 23.0, currency: "AUD" },
+        { amount: 12.2, currency: "GBP" }
+      ]
+    },
+    generalDesc: "The download size of this product is 1.65 GB. It uses 3.78 GB when installed.",
+    features: [
       "Accurate representation of Kaunas International Airport",
       "Modern terminal building with detailed interior",
       "Custom Baltic region vegetation",
@@ -92,7 +122,7 @@ export const sliderData = [
     ]
   },
   {
-    id:3,
+    id: 3,
     img: örebro,
     code: "ESOE",
     title: "Örebro",
@@ -100,9 +130,19 @@ export const sliderData = [
     desc:
       "Örebro Airport is Sweden's 23rd largest passenger airport and the fourth largest cargo airport.",
     welcomeText: "Sweden Stars Here!",
-     lat: 59.2237,
+    lat: 59.2237,
     lng: 15.0380,
     color: "#FFD84D",
+    videourl: "https://www.youtube.com/watch?v=h8PG1vsE97A",
+    pricing: {
+      main: { amount: 16.49, currency: "USD" },
+      others: [
+        { amount: 20.99, currency: "EUR" },
+        { amount: 23.0, currency: "AUD" },
+        { amount: 12.2, currency: "GBP" }
+      ]
+    },
+    generalDesc: "The download size of this product is 1.39 GB. It uses 2.75 GB when installed.",
     features: [
       "Detailed recreation of Örebro Airport Sweden",
       "Authentic Scandinavian architecture",
