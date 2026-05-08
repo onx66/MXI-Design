@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 
-import { sliderData } from "../../data/sliderData.js";
 import "./ProductDetail.css";
 import PurchaseCard from "./PurchaseCard/PurchaseCard.jsx";
 import FeatureList from "./FeatureList/FeatureList.jsx";
@@ -8,13 +7,44 @@ import Header from "../Header/Header.jsx";
 import ScreenShotsSection from "./ScreenShotsSection/ScreenShotsSection.jsx";
 import VideoSection from "./VideoSection/VideoSection.jsx";
 import Footer from "../Footer/Footer.jsx";
+import { useProducts } from "../../context/ProductContext.jsx";
 
+const getProductPlatforms = (product) => {
+  return product.platforms?.length ? product.platforms : ["MSFS", "XPLANE"];
+};
 
+const getSimulatorLabels = (product) => {
+  const platforms = getProductPlatforms(product);
+  const labels = [];
+
+  if (platforms.includes("MSFS")) {
+    labels.push("Microsoft Flight Simulator", "Microsoft Flight Simulator 2024");
+  }
+
+  if (platforms.includes("XPLANE")) {
+    labels.push("X-Plane");
+  }
+
+  return labels;
+};
 
 function ProductDetail() {
   const { id } = useParams();
-  const productIndex = parseInt(id) || 0;
-  const product = sliderData[productIndex] || sliderData[0];
+  const { getProductByRouteId, isLoading } = useProducts();
+  const product = getProductByRouteId(id);
+
+  if (!product) {
+    return (
+      <section className="product-detail">
+        <Header />
+        <div className="detail-container">
+          <p className="description">{isLoading ? "Loading product..." : "Product not found."}</p>
+        </div>
+        <Footer />
+      </section>
+    );
+  }
+
   return (
     <section className="product-detail">
       <Header />
@@ -50,7 +80,7 @@ function ProductDetail() {
         </div>
       </div>
       <div className="screen-shots-container">
-        <ScreenShotsSection />
+        <ScreenShotsSection images={product.images?.length ? product.images : [product.img]} />
       </div>
       <div className="screen-shots-container">
         <VideoSection video={product.videourl} />
@@ -65,8 +95,9 @@ function ProductDetail() {
           <h2>Supported Simulators </h2>
           <p>This product is compatible with the following simulators:</p>
           <div className="support-simulation-platform">
-            <span className="mfs-desc">Microsoft Flight Simulator</span>
-            <span className="mfs-desc">Microsoft Flight Simulator 2024</span>
+            {getSimulatorLabels(product).map((label) => (
+              <span className="mfs-desc" key={label}>{label}</span>
+            ))}
           </div>
         </div>
         <div className="operating-system">

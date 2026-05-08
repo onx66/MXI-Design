@@ -2,16 +2,31 @@ import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./ProductsListPage.css";
-import { sliderData } from "../../data/sliderData";
+import { useProducts } from "../../context/ProductContext";
+
+const getProductPlatforms = (product) => {
+    return product.platforms?.length ? product.platforms : ["MSFS", "XPLANE"];
+};
+
+const getCategoryPlatform = (category) => {
+    if (!category) return null;
+    return category.toUpperCase() === "MSFS" ? "MSFS" : "XPLANE";
+};
+
+const getPlatformLabel = (platform) => {
+    return platform === "XPLANE" ? "X-Plane" : "MSFS";
+};
 
 function ProductsListPage() {
     const { category } = useParams();
     const navigate = useNavigate();
+    const { products } = useProducts();
+    const categoryPlatform = getCategoryPlatform(category);
 
 
-    const filteredProducts = category
-        ? sliderData
-        : sliderData;
+    const filteredProducts = categoryPlatform
+        ? products.filter((product) => getProductPlatforms(product).includes(categoryPlatform))
+        : products;
 
     const categoryTitle = category
         ? category.toUpperCase() === 'MSFS'
@@ -34,7 +49,7 @@ function ProductsListPage() {
                  {filteredProducts.map((product, index) => (
                     <div 
                         className="products-list-content-card" 
-                        key={product.code} 
+                        key={product.id ?? product.code} 
                         data-testid={`product-card-${product.code}`}
                         onClick={() => handleProductClick(product.id !== undefined ? product.id : index)}
                         style={{ cursor: 'pointer' }}
@@ -53,10 +68,11 @@ function ProductsListPage() {
                             {product.desc}
                         </p>
                         <div className="product-platforms">
-                            <span className="platform\">MSFS</span>
-                            <span className="platform\">MSFS 2024</span>
+                            {getProductPlatforms(product).map((platform) => (
+                                <span className="platform" key={platform}>{getPlatformLabel(platform)}</span>
+                            ))}
                         </div>
-                        <div className="product-divider\"></div>
+                        <div className="product-divider"></div>
                     </div>
                 </div>
                 ))}

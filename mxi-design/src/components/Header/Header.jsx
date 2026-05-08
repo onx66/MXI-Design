@@ -4,13 +4,14 @@ import ContactUsButton from "../ContactUsButton/ContactUsButton";
 import ProductsButton from "../ProductsButton/ProductsButton";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { useSearch } from "../../context/SearchContext";
-import { sliderData } from "../../data/sliderData";
+import { useProducts } from "../../context/ProductContext";
 import "./Header.css";
 
 function Header() {
     const width = useWindowWidth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { searchQuery, setSearchQuery, isSearchFocused, setIsSearchFocused } = useSearch();
+    const { products } = useProducts();
     const searchRef = useRef(null);
     const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ function Header() {
 
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
-        ? sliderData.filter((product) => {
+        ? products.filter((product) => {
             const query = searchQuery.toLowerCase();
             return (
                 product.title.toLowerCase().includes(query) ||
