@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./WorldMap.css";
-import { sliderData } from "../../data/sliderData";
+import { useProducts } from "../../context/ProductContext";
 
 
 const createPopupHTML = (item) => `
@@ -17,12 +17,13 @@ const createPopupHTML = (item) => `
 `;
 
 function WorldMap() {
+  const { products } = useProducts();
   const mapContainer = useRef(null);
   const mapInstance = useRef(null);
   const activePopupRef = useRef(null);
 
   useEffect(() => {
-    if (!mapContainer.current || mapInstance.current) return;
+    if (!mapContainer.current || products.length === 0) return;
 
     const map = new maplibregl.Map({
       container: mapContainer.current,
@@ -74,7 +75,7 @@ function WorldMap() {
       }
 
       //  Marker + Popup
-      sliderData.forEach((item) => {
+      products.forEach((item) => {
         const popup = new maplibregl.Popup({
           closeButton: false,
           closeOnClick: false,
@@ -147,8 +148,9 @@ function WorldMap() {
     return () => {
       map.remove();
       mapInstance.current = null;
+      activePopupRef.current = null;
     };
-  }, []);
+  }, [products]);
 
   return <div ref={mapContainer} className="world-map" />;
 }

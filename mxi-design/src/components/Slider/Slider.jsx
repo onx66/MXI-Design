@@ -1,13 +1,19 @@
-import { useState } from "react";
-import { sliderData } from "../../data/sliderData.js";
+import { useEffect, useState } from "react";
 import "./Slider.css";
 import MoreInfoButton from "../MoreInfoButton/MoreInfoButton.jsx";
-import ViewAllButton from "../ViewAllButton/ViewAllButton.jsx";
+import { useProducts } from "../../context/ProductContext.jsx";
 
 
 function Slider() {
+  const { products } = useProducts();
   const [activeIndex, setActiveIndex] = useState(0);
-  const total = sliderData.length;
+  const total = products.length;
+
+  useEffect(() => {
+    if (activeIndex >= total) {
+      setActiveIndex(0);
+    }
+  }, [activeIndex, total]);
 
 
   const nextSlide = () => {
@@ -19,16 +25,18 @@ function Slider() {
   };
 
 
+  if (total === 0) return null;
+
   return (
     <div className="slider">
       {/* MAIN SLIDES */}
       {/* MAIN SLIDES */}
       <div className="list">
-        {sliderData.map((item, index) => {
+        {products.map((item, index) => {
           const titleParts = item.title?.split(" ") || [];
           return (
             <div
-              key={index}
+              key={item.id ?? item.code ?? index}
               className={`item ${index === activeIndex ? "active" : ""}`}
             >
               <img src={item.img} alt={item.title} />
@@ -50,7 +58,7 @@ function Slider() {
                 )}
 
                 <p>{item.desc}</p>
-                <MoreInfoButton productId={index} />
+                <MoreInfoButton productId={item.id ?? index} />
               </div>
             </div>
           );
@@ -64,9 +72,9 @@ function Slider() {
 
       {/* THUMBNAILS */}
       <div className="thumbnail">
-        {sliderData.map((item, index) => (
+        {products.map((item, index) => (
           <div
-            key={index}
+            key={item.id ?? item.code ?? index}
             className={`item ${index === activeIndex ? "active" : ""}`}
             onClick={() => setActiveIndex(index)}
           >
