@@ -6,8 +6,14 @@ import { useProducts } from "../../context/ProductContext.jsx";
 
 function Slider() {
   const { products } = useProducts();
+  const configuredSliderProducts = products
+    .filter((product) => product.homepageSliderOrder >= 1 && product.homepageSliderOrder <= 4)
+    .sort((a, b) => a.homepageSliderOrder - b.homepageSliderOrder);
+  const sliderProducts = configuredSliderProducts.length > 0
+    ? configuredSliderProducts.slice(0, 4)
+    : products.slice(0, 4);
   const [activeIndex, setActiveIndex] = useState(0);
-  const total = products.length;
+  const total = sliderProducts.length;
 
   useEffect(() => {
     if (activeIndex >= total) {
@@ -32,7 +38,7 @@ function Slider() {
       {/* MAIN SLIDES */}
       {/* MAIN SLIDES */}
       <div className="list">
-        {products.map((item, index) => {
+        {sliderProducts.map((item, index) => {
           const titleParts = item.title?.split(" ") || [];
           return (
             <div
@@ -72,7 +78,7 @@ function Slider() {
 
       {/* THUMBNAILS */}
       <div className="thumbnail">
-        {products.map((item, index) => (
+        {sliderProducts.map((item, index) => (
           <div
             key={item.id ?? item.code ?? index}
             className={`item ${index === activeIndex ? "active" : ""}`}
