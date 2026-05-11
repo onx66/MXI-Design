@@ -35,15 +35,7 @@ const normalizePricing = (product) => {
 };
 
 const normalizeImages = (product) => {
-  const apiImages = Array.isArray(product.images)
-    ? product.images.filter(Boolean)
-    : [];
-  const fallbackImage =
-    product.img ||
-    fallbackImageByCode[product.code] ||
-    "";
-
-  return apiImages.length > 0 ? apiImages : fallbackImage ? [fallbackImage] : [];
+  return Array.isArray(product.images) ? product.images.filter(Boolean) : [];
 };
 
 const normalizePlatforms = (platforms) => {
@@ -62,13 +54,17 @@ const normalizePlatforms = (platforms) => {
 
 export const normalizeAirportProduct = (product, index = 0) => {
   const images = normalizeImages(product);
-  const img = product.img || images[0] || "";
+  const mainImage = product.mainImage || product.main_image || "";
+  const fallbackImage = fallbackImageByCode[product.code] || "";
+  const img = mainImage || product.img || images[0] || fallbackImage;
 
   return {
     id: product.id ?? product.code ?? index,
     apiId: product.id ?? null,
     img,
+    mainImage,
     images,
+    homepageSliderOrder: toNumber(product.homepageSliderOrder || product.homepage_slider_order, 0),
     code: product.code || "",
     title: product.title || "",
     subtitle: product.subtitle || "",

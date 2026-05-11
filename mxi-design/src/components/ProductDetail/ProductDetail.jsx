@@ -80,7 +80,7 @@ function ProductDetail() {
         </div>
       </div>
       <div className="screen-shots-container">
-        <ScreenShotsSection images={product.images?.length ? product.images : [product.img]} />
+        <ScreenShotsSection images={product.images || []} />
       </div>
       <div className="screen-shots-container">
         <VideoSection video={product.videourl} />
