@@ -26,6 +26,10 @@ function Header() {
         navigate("/");
         setIsMenuOpen(false);
     };
+    const goToAbout = () => {
+        navigate("/about");
+        setIsMenuOpen(false);
+    };
 
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
@@ -70,7 +74,7 @@ function Header() {
                         </li>
                         <li data-testid="menu-news">News</li>
                         <li data-testid="menu-partners">Partners</li>
-                        <li data-testid="menu-about">About Us</li>
+                        <li data-testid="menu-about" onClick={goToAbout}>About Us</li>
                     </ul>
                 </nav>
             )}
@@ -204,7 +208,7 @@ function Header() {
                         </li>
                         <li data-testid="mobile-menu-news">News</li>
                         <li data-testid="mobile-menu-partners">Partners</li>
-                        <li data-testid="mobile-menu-about">About Us</li>
+                        <li data-testid="mobile-menu-about" onClick={goToAbout}>About Us</li>
                     </ul>
 
                     <div
