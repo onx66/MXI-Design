@@ -296,7 +296,7 @@
 
 @media screen and (max-width:1080px) {
     .thumbnail {
-        padding-left: 10px;
+        padding-left: 50px;
         justify-content: start;
         right: 0;
     }
