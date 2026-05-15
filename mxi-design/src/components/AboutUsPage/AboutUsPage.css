@@ -4,9 +4,9 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(to bottom right,
-        rgba(15, 23, 43, 1),
-        rgba(22, 36, 86, 1),
-        rgba(2, 47, 46, 1));
+            rgba(15, 23, 43, 1),
+            rgba(22, 36, 86, 1),
+            rgba(2, 47, 46, 1));
     color: #eee;
 }
 
@@ -108,8 +108,15 @@
 }
 
 @keyframes floatGlow {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(20px, -20px); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -20px);
+    }
 }
 
 .about-hero-inner {
@@ -174,8 +181,15 @@
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ---------- Buttons ---------- */
@@ -542,6 +556,53 @@
     gap: 12px;
     align-items: flex-end;
 }
+
+/* About Us Page */
+.about-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom right,
+            rgba(15, 23, 43, 1),
+            rgba(22, 36, 86, 1),
+            rgba(2, 47, 46, 1));
+    color: #eee;
+}
+
+.about-main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    box-sizing: border-box;
+}
+
+/* ---------- Shared text bits ---------- */
+.section-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(0, 213, 190, 0.08);
+    border: 1px solid rgba(0, 213, 190, 0.25);
+    color: #00D5BE;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-story-text p {
+    font-size: 15px;
+}
+
+.about-stat h3 {
+    font-size: 34px;
+}
+
+.about-cta {
+    padding: 40px 20px;
+}
+
+
+
 
 /* ---------- Responsive ---------- */
 @media screen and (max-width: 1050px) {
