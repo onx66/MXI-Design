@@ -30,6 +30,10 @@ function Header() {
         navigate("/about");
         setIsMenuOpen(false);
     };
+    const goToNews = () => {
+        navigate("/news");
+        setIsMenuOpen(false);
+    };
 
     // Arama sonuçlarını filtrele
     const searchResults = searchQuery.trim().length > 0
@@ -72,7 +76,7 @@ function Header() {
                         <li data-testid="menu-products">
                             <ProductsButton />
                         </li>
-                        <li data-testid="menu-news">News</li>
+                        <li data-testid="menu-news" onClick={goToNews}>News</li>
                         <li data-testid="menu-partners">Partners</li>
                         <li data-testid="menu-about" onClick={goToAbout}>About Us</li>
                     </ul>
@@ -131,7 +135,7 @@ function Header() {
                             {searchResults.length > 0 ? (
                                 <>
                                     <div className="search-dropdown-header">
-                                        <span>{searchResults.length} sonuç bulundu</span>
+                                        <span>{searchResults.length} a result was found</span>
                                     </div>
                                     <ul className="search-results-list">
                                         {searchResults.map((product, index) => (
@@ -166,7 +170,7 @@ function Header() {
                                         <path d="m21 21-4.35-4.35"></path>
                                         <path d="M8 8l6 6M14 8l-6 6" />
                                     </svg>
-                                    <span>\"{searchQuery}\" için sonuç bulunamadı</span>
+                                    <span>\"{searchQuery}\" no results found</span>
                                 </div>
                             )}
                         </div>
@@ -206,7 +210,7 @@ function Header() {
                         <li data-testid="mobile-menu-products">
                             <ProductsButton />
                         </li>
-                        <li data-testid="mobile-menu-news">News</li>
+                        <li data-testid="mobile-menu-news" onClick={goToNews}>News</li>
                         <li data-testid="mobile-menu-partners">Partners</li>
                         <li data-testid="mobile-menu-about" onClick={goToAbout}>About Us</li>
                     </ul>
