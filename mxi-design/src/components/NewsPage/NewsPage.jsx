@@ -2,21 +2,28 @@ import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { newsData, formatNewsDate } from "../../data/newsData";
+import { useNews } from "../../context/NewsContext";
+import { formatNewsDate, sortNewsItems } from "../../data/newsData";
 import "./NewsPage.css";
+
+function truncateText(value, maxLength = 150) {
+    const text = String(value || "").trim();
+    if (text.length <= maxLength) return text;
+
+    const sliced = text.slice(0, maxLength).trimEnd();
+    const lastSpace = sliced.lastIndexOf(" ");
+    const cleanText = lastSpace > 90 ? sliced.slice(0, lastSpace) : sliced;
+
+    return `${cleanText}...`;
+}
 
 function NewsPage() {
     const navigate = useNavigate();
+    const { newsItems } = useNews();
 
-    // En yeniden eskiye sırala
     const sorted = useMemo(
-        () =>
-            [...newsData].sort(
-                (a, b) =>
-                    new Date(b.publishedAt || 0).getTime() -
-                    new Date(a.publishedAt || 0).getTime()
-            ),
-        []
+        () => sortNewsItems(newsItems),
+        [newsItems]
     );
 
     const featured = sorted[0];
@@ -31,26 +38,30 @@ function NewsPage() {
             <Header />
 
             <main className="news-main">
-                {/* HEADER / HERO */}
                 <section className="news-header" data-testid="news-header">
                     <div className="news-header-glow news-header-glow-1"></div>
                     <div className="news-header-glow news-header-glow-2"></div>
 
                     <div className="news-header-inner">
-                        <span className="section-tag">Aviation News</span>
+                        <span className="section-tag">MXI Journal</span>
                         <h1>
-                            News from the <span className="gradient-text">flight world.</span>
+                            Notes from the <span className="gradient-text">design desk.</span>
                         </h1>
                         <div className="news-header-line"></div>
                         <p>
-                            Airlines, aircraft, airports, ATC and the flight-sim industry — the
-                            stories shaping aviation, curated for the people who actually fly,
-                            control and build it.
+                            Project logs, release notes and behind-the-scenes thoughts from the
+                            scenery work I build for flight simulation.
                         </p>
                     </div>
                 </section>
 
-                {/* FEATURED */}
+                {sorted.length === 0 && (
+                    <section className="news-state" data-testid="news-empty-state">
+                        <i className="fa-solid fa-pen-nib"></i>
+                        <span>No journal entries have been published yet.</span>
+                    </section>
+                )}
+
                 {featured && (
                     <section className="news-featured" data-testid="news-featured">
                         <button
@@ -61,7 +72,7 @@ function NewsPage() {
                             <div className="news-featured-image">
                                 <img src={featured.coverImage} alt={featured.title} />
                                 <div className="news-featured-tint"></div>
-                                <span className="news-featured-badge">Featured</span>
+                                <span className="news-featured-badge">Latest Entry</span>
                             </div>
 
                             <div className="news-featured-body">
@@ -79,9 +90,9 @@ function NewsPage() {
                                     )}
                                 </div>
                                 <h2>{featured.title}</h2>
-                                <p>{featured.summary}</p>
+                                <p>{truncateText(featured.summary)}</p>
                                 <span className="news-read-more">
-                                    Read the full story
+                                    Read the entry
                                     <i className="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
@@ -89,7 +100,6 @@ function NewsPage() {
                     </section>
                 )}
 
-                {/* LIST */}
                 {rest.length > 0 && (
                     <section className="news-list" data-testid="news-list">
                         {rest.map((n) => (
@@ -118,7 +128,7 @@ function NewsPage() {
                                     <h3>{n.title}</h3>
                                     <p>{n.summary}</p>
                                     <span className="news-card-link">
-                                        Read more
+                                        Open entry
                                         <i className="fa-solid fa-arrow-right"></i>
                                     </span>
                                 </div>

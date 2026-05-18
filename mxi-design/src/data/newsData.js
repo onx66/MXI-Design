@@ -1,195 +1,93 @@
-/**
- * News Data — Static
- *
- * Tüm news verisi burada tutuluyor (backend yok).
- * Yeni haber eklemek için sadece bu dosyaya yeni bir obje ekle.
- *
- * NewsItem şeması:
- * {
- *   id: string | number,        // benzersiz
- *   title: string,
- *   summary: string,
- *   content: string,            // HTML string (h2/h3/ul/blockquote/img destekli)
- *   coverImage: string,         // URL
- *   category: string,           // örn: \"Aircraft\", \"Airlines\", \"Airports\", \"FlightSim\", \"ATC\", \"Industry\"
- *   author?: string,
- *   publishedAt: string,        // ISO date — \"2026-01-18T08:00:00Z\"
- *   tags?: string[],
- *   readTime?: string           // \"5 min read\"
- * }
- */
+import istanbulAirportImage from "../assets/images/istanbul-airport.jpg";
+import xplaneSoftwareImage from "../assets/images/xplane-software.png";
+import msfsSoftwareImage from "../assets/images/microsoft-flight-simulator.png";
+import kaunasAirportImage from "../assets/images/kaunas-airport.jpg";
+
+export const NEWS_STORAGE_KEY = "mxi-design-news-posts";
 
 export const newsData = [
     {
-        id: "1",
-        title: "Airbus A350-1000 Hits Major Delivery Milestone",
+        id: "journal-istanbul-ground",
+        title: "Istanbul Ground Texture Notes",
         summary:
-            "Airbus delivers its 100th A350-1000 to a launch customer in the Gulf, cementing the type as the long-haul workhorse of the next decade.",
-        coverImage:
-            "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1600&q=75",
-        category: "Aircraft",
-        author: "Aviation Desk",
-        publishedAt: "2026-01-18T08:00:00Z",
-        readTime: "5 min read",
-        tags: ["Airbus", "A350", "Long-haul"],
-        content: `
-            <p>Airbus has handed over the <strong>100th A350-1000</strong> to a Gulf-based launch customer, a milestone that comes faster than industry analysts predicted only three years ago. The widebody is now active with sixteen operators on six continents.</p>
-            <h3>Why It Matters</h3>
-            <ul>
-                <li>Lower trip costs than the 777-300ER on equivalent routes</li>
-                <li>25% fuel-burn reduction vs. previous-generation widebodies</li>
-                <li>Quieter cabin, longer range, smaller carbon footprint</li>
-            </ul>
-            <p>Airbus expects backlog deliveries to stretch into the early 2030s, with combi and freighter variants entering service later this decade.</p>
-            <blockquote>“The A350 has redefined long-haul economics for a generation.” — Senior Industry Analyst</blockquote>
-        `,
-    },
-    {
-        id: "2",
-        title: "MSFS 2024 World Update: Türkiye &amp; Istanbul",
-        summary:
-            "Microsoft Flight Simulator&apos;s latest free world update brings hand-curated POIs, photogrammetry over Istanbul and improved Bosphorus coastline geometry.",
-        coverImage:
-            "https://images.unsplash.com/photo-1583416750470-965b2707b355?auto=format&fit=crop&w=1600&q=75",
-        category: "FlightSim",
-        author: "Sim Desk",
-        publishedAt: "2026-01-12T11:30:00Z",
+            "A short production note on cleaning apron markings, taxiway color balance and night lighting around the Istanbul scenery package.",
+        coverImage: istanbulAirportImage,
+        category: "Project Log",
+        author: "MXI Design",
+        publishedAt: "2026-02-12T09:00:00Z",
         readTime: "4 min read",
-        tags: ["MSFS", "World Update", "Türkiye"],
-        content: `
-            <p>Microsoft Flight Simulator 2024&apos;s latest free world update lands on January 12, focused on Türkiye and the Istanbul metropolitan area. The package includes hand-modeled landmarks, sharper photogrammetry over the historic peninsula and a redrawn Bosphorus coastline.</p>
-            <h3>Highlights</h3>
-            <ul>
-                <li>Hagia Sophia, Blue Mosque and Galata Tower hand-modeled</li>
-                <li>Photogrammetry over Sultanahmet, Beşiktaş and Kadıköy</li>
-                <li>Five new bush trips across Anatolia</li>
-                <li>Improved water masking around the Bosphorus and Marmara Sea</li>
-            </ul>
-            <p>The update is free for all MSFS 2024 owners and downloads automatically through the in-game content manager.</p>
-        `,
+        tags: ["Istanbul", "Scenery", "Textures"],
+        content: `This week was mostly about the ground layer: apron paint, hold-short markings and the small surface details that make the airport feel believable at taxi speed.
+
+The first pass looked too clean inside the simulator, so I pulled the contrast back and added softer wear around the busiest stands. The goal is not to make everything noisy. It is to make the eye believe the surface has been used.
+
+Night lighting also needed a second look. A few blue taxiway lights were reading too strong from cockpit height, especially after rain. That pass is now calmer and sits better with the terminal lighting.`,
     },
     {
-        id: "3",
-        title: "VATSIM “Cross the Pond” 2026 Dates Announced",
+        id: "journal-xplane-export",
+        title: "What I Check Before an X-Plane Export",
         summary:
-            "The world&apos;s largest online flying event returns this spring, with full ATC coverage across the North Atlantic for 12 hours.",
-        coverImage:
-            "https://images.unsplash.com/photo-1569629743817-70d8db6c323b?auto=format&fit=crop&w=1600&q=75",
-        category: "ATC",
-        author: "Community Desk",
-        publishedAt: "2026-01-09T09:15:00Z",
+            "My quick checklist before a scenery build leaves Blender and goes into the simulator for the first real taxi test.",
+        coverImage: xplaneSoftwareImage,
+        category: "Workflow",
+        author: "MXI Design",
+        publishedAt: "2026-02-03T09:00:00Z",
         readTime: "3 min read",
-        tags: ["VATSIM", "Events", "NAT"],
-        content: `
-            <p>VATSIM has confirmed the dates for its flagship transatlantic event: <strong>Cross the Pond 2026</strong> will run on April 25 with full ATC coverage from gate to gate across the North Atlantic Track System.</p>
-            <p>The event regularly draws over 3,000 pilots and 600 controllers in a single afternoon, making it the busiest virtual airspace day of the year.</p>
-            <h3>How to Take Part</h3>
-            <ul>
-                <li>Sign up via the VATSIM Cross the Pond portal opens February 1</li>
-                <li>Slot assignments published two weeks before the event</li>
-                <li>Required: current VATSIM membership and a compatible client</li>
-            </ul>
-        `,
+        tags: ["X-Plane", "Workflow", "Export"],
+        content: `Every export starts with the same boring checks, and that is exactly why they work. Scale, naming, material count and texture paths all get checked before I even open the simulator.
+
+The taxi test comes after that. I load a default aircraft, start cold at a few different stands and move slowly through the areas that usually hide mistakes: jetways, service roads, tight turns and terminal edges.
+
+If the scene feels right at low speed, it usually survives the rest of the polish pass.`,
     },
     {
-        id: "4",
-        title: "Boeing 737 MAX 10 Certification Update",
+        id: "journal-msfs-lighting",
+        title: "MSFS Lighting Pass: Keeping It Subtle",
         summary:
-            "The FAA outlines the final hurdles before the largest member of the MAX family enters commercial service.",
-        coverImage:
-            "https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1600&q=75",
-        category: "Aircraft",
-        author: "Regulatory Desk",
-        publishedAt: "2025-12-29T14:00:00Z",
-        readTime: "6 min read",
-        tags: ["Boeing", "FAA", "737 MAX"],
-        content: `
-            <p>The FAA has published its latest update on the Boeing 737 MAX 10 certification roadmap, narrowing the remaining items to engine-anti-ice software validation and final crew-alerting compliance.</p>
-            <p>If the timeline holds, the type could enter commercial service in late 2026 with multiple US and European launch customers.</p>
-        `,
-    },
-    {
-        id: "5",
-        title: "Istanbul Airport: Third Runway Now Operational",
-        summary:
-            "LTFM&apos;s third independent runway opens, lifting peak-hour capacity by 30% and reshaping European arrival flows.",
-        coverImage:
-            "https://images.unsplash.com/photo-1532883716268-eaee23a72f1f?auto=format&fit=crop&w=1600&q=75",
-        category: "Airports",
-        author: "Infrastructure Desk",
-        publishedAt: "2025-12-18T07:45:00Z",
-        readTime: "4 min read",
-        tags: ["LTFM", "Istanbul", "Runways"],
-        content: `
-            <p>Istanbul Airport (LTFM) has commissioned its third independent parallel runway, lifting peak-hour movement capacity by roughly 30% and easing pressure on Europe&apos;s busiest arrival flows.</p>
-            <p>The new runway, 17R/35L, is fully ILS-equipped and supports CAT III B approaches from day one.</p>
-        `,
-    },
-    {
-        id: "6",
-        title: "Emirates Rolls Out Premium Economy on the A380",
-        summary:
-            "The Gulf carrier completes its A380 cabin refresh, becoming one of the first global super-jumbo operators with a true premium-economy product.",
-        coverImage:
-            "https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=1600&q=75",
-        category: "Airlines",
-        author: "Cabin Desk",
-        publishedAt: "2025-12-04T10:00:00Z",
-        readTime: "3 min read",
-        tags: ["Emirates", "A380", "Cabin"],
-        content: `
-            <p>Emirates has completed the rollout of its premium-economy cabin across the A380 fleet, capping a multi-year retrofit that adds a brand-new product between business and economy.</p>
-            <p>Industry observers expect competing super-jumbo operators to follow suit within twelve months.</p>
-        `,
-    },
-    {
-        id: "7",
-        title: "EU SAF Mandate: What Changes in 2026",
-        summary:
-            "Europe&apos;s Sustainable Aviation Fuel mandate steps up this year. Here&apos;s what airlines, airports and passengers should expect.",
-        coverImage:
-            "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=75",
-        category: "Industry",
-        author: "Policy Desk",
-        publishedAt: "2025-11-21T16:00:00Z",
-        readTime: "7 min read",
-        tags: ["SAF", "EU", "Sustainability"],
-        content: `
-            <p>The EU&apos;s Sustainable Aviation Fuel (SAF) mandate steps up its blending requirements in 2026, with implications for airline costs, airport supply chains and ultimately ticket prices.</p>
-            <h3>What Changes</h3>
-            <ul>
-                <li>Minimum SAF blending raised across EU departure airports</li>
-                <li>Suppliers must register and report quarterly</li>
-                <li>Penalties for non-compliance tighten</li>
-            </ul>
-            <p>Analysts expect airlines to absorb part of the cost while passing a portion to passengers as a small per-ticket levy.</p>
-        `,
-    },
-    {
-        id: "8",
-        title: "X-Plane 12 Gets Helicopter Flight Model Overhaul",
-        summary:
-            "Laminar Research previews a deep rewrite of the helicopter flight model, with improved rotor dynamics and ground-effect behaviour.",
-        coverImage:
-            "https://images.unsplash.com/photo-1559627755-42df3a3a36a8?auto=format&fit=crop&w=1600&q=75",
-        category: "FlightSim",
-        author: "Sim Desk",
-        publishedAt: "2025-11-08T13:30:00Z",
+            "A behind-the-scenes look at balancing terminal glow, ramp visibility and runway approach mood without turning the scenery into a light show.",
+        coverImage: msfsSoftwareImage,
+        category: "Behind the Scenes",
+        author: "MXI Design",
+        publishedAt: "2026-01-24T09:00:00Z",
         readTime: "5 min read",
-        tags: ["X-Plane", "Helicopters"],
-        content: `
-            <p>Laminar Research has previewed a substantial rewrite of X-Plane 12&apos;s helicopter flight model, with new rotor dynamics, improved ground-effect handling and more realistic autorotation behaviour.</p>
-            <p>The update is slated to land in a free patch later this quarter.</p>
-        `,
+        tags: ["MSFS", "Lighting", "Testing"],
+        content: `Lighting is one of the easiest places to overdo a scenery project. The simulator makes bright lights look exciting in screenshots, but the cockpit view needs restraint.
+
+For this pass I worked from three positions: short final, taxiway centerline and a parked stand. Each one tells a different truth about the same airport.
+
+The best result came from reducing intensity and adding more separation between light sources. Less glow, more structure.`,
+    },
+    {
+        id: "journal-kaunas-blockout",
+        title: "Kaunas Blockout to First Preview",
+        summary:
+            "How the early blockout turned into a usable preview build, and which details moved from nice-to-have into the first polish pass.",
+        coverImage: kaunasAirportImage,
+        category: "Preview",
+        author: "MXI Design",
+        publishedAt: "2026-01-11T09:00:00Z",
+        readTime: "4 min read",
+        tags: ["Kaunas", "Preview", "Modeling"],
+        content: `The Kaunas blockout started as pure structure: runway, apron, terminal volume and the main service roads. No decoration, no tiny details, just the airport's shape.
+
+That rough version helped decide where detail actually matters. The terminal front, apron edge and approach-side silhouettes needed more attention than the outer service zones.
+
+The first preview build now has enough detail to judge scale and mood. From here, the work becomes slower and more deliberate.`,
     },
 ];
 
-// ID ile haber bul (detay sayfası için)
-export function getNewsById(id) {
-    return newsData.find((n) => String(n.id) === String(id)) || null;
+export function sortNewsItems(items) {
+    return [...items].sort(
+        (a, b) =>
+            new Date(b.publishedAt || 0).getTime() -
+            new Date(a.publishedAt || 0).getTime()
+    );
 }
 
-// Tarihi okunabilir formata çevir
+export function getNewsById(id, items = newsData) {
+    return items.find((n) => String(n.id) === String(id)) || null;
+}
+
 export function formatNewsDate(iso) {
     if (!iso) return "";
     try {
@@ -202,4 +100,45 @@ export function formatNewsDate(iso) {
     } catch {
         return iso;
     }
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function formatPlainBlock(block) {
+    const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+    const isList = lines.length > 0 && lines.every((line) => line.startsWith("- "));
+
+    if (isList) {
+        return `<ul>${lines
+            .map((line) => `<li>${escapeHtml(line.slice(2))}</li>`)
+            .join("")}</ul>`;
+    }
+
+    if (lines.length === 1 && lines[0].startsWith("## ")) {
+        return `<h3>${escapeHtml(lines[0].slice(3))}</h3>`;
+    }
+
+    return `<p>${escapeHtml(block.trim()).replaceAll("\n", "<br />")}</p>`;
+}
+
+export function formatNewsContent(content) {
+    if (!content) return "";
+    const trimmed = String(content).trim();
+    if (!trimmed) return "";
+
+    if (/<\/?(p|h2|h3|ul|ol|li|blockquote|strong|em|a|img|br|code)\b/i.test(trimmed)) {
+        return trimmed;
+    }
+
+    return trimmed
+        .split(/\n\s*\n/)
+        .map(formatPlainBlock)
+        .join("");
 }

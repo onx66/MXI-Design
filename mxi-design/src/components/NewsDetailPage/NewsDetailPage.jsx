@@ -2,28 +2,24 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { newsData, getNewsById, formatNewsDate } from "../../data/newsData";
+import { useNews } from "../../context/NewsContext";
+import { formatNewsContent, formatNewsDate, sortNewsItems } from "../../data/newsData";
 import "./NewsDetailPage.css";
 
 function NewsDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { newsItems, getNewsById } = useNews();
 
-    const item = useMemo(() => getNewsById(id), [id]);
+    const item = useMemo(() => getNewsById(id), [getNewsById, id]);
 
     const related = useMemo(() => {
         if (!item) return [];
-        return newsData
+        return sortNewsItems(newsItems)
             .filter((n) => String(n.id) !== String(item.id))
-            .sort(
-                (a, b) =>
-                    new Date(b.publishedAt || 0).getTime() -
-                    new Date(a.publishedAt || 0).getTime()
-            )
             .slice(0, 3);
-    }, [item]);
+    }, [item, newsItems]);
 
-    // id değişince yukarı kaydır
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [id]);
@@ -34,16 +30,16 @@ function NewsDetailPage() {
                 <Header />
                 <main className="news-detail-main">
                     <div className="news-detail-state" data-testid="news-detail-notfound">
-                        <i className="fa-solid fa-newspaper"></i>
-                        <h2>Article not found</h2>
-                        <p>The story you&apos;re looking for has taxied off the page.</p>
+                        <i className="fa-solid fa-pen-nib"></i>
+                        <h2>Post not found</h2>
+                        <p>The journal entry you are looking for is not available.</p>
                         <button
                             className="btn-primary"
                             onClick={() => navigate("/news")}
                             data-testid="news-detail-back-btn"
                         >
                             <i className="fa-solid fa-arrow-left"></i>
-                            <span>Back to News</span>
+                            <span>Back to Journal</span>
                         </button>
                     </div>
                 </main>
@@ -57,7 +53,6 @@ function NewsDetailPage() {
             <Header />
 
             <main className="news-detail-main">
-                {/* HERO COVER */}
                 <section className="news-detail-hero" data-testid="news-detail-hero">
                     <div className="news-detail-hero-bg">
                         <img src={item.coverImage} alt={item.title} />
@@ -71,7 +66,7 @@ function NewsDetailPage() {
                             data-testid="news-detail-back-link"
                         >
                             <i className="fa-solid fa-arrow-left"></i>
-                            <span>All News</span>
+                            <span>All Entries</span>
                         </button>
 
                         <div className="news-detail-meta">
@@ -94,23 +89,22 @@ function NewsDetailPage() {
                         {item.author && (
                             <div className="news-detail-author">
                                 <div className="news-detail-author-avatar">
-                                    <i className="fa-solid fa-user-astronaut"></i>
+                                    <i className="fa-solid fa-user-pen"></i>
                                 </div>
                                 <div>
                                     <span className="news-detail-author-name">{item.author}</span>
-                                    <span className="news-detail-author-role">Aviation News</span>
+                                    <span className="news-detail-author-role">MXI Design Journal</span>
                                 </div>
                             </div>
                         )}
                     </div>
                 </section>
 
-                {/* ARTICLE BODY */}
                 <article className="news-detail-article">
                     <div
                         className="news-detail-content"
                         data-testid="news-detail-content"
-                        dangerouslySetInnerHTML={{ __html: item.content || "" }}
+                        dangerouslySetInnerHTML={{ __html: formatNewsContent(item.content) }}
                     />
 
                     {item.tags && item.tags.length > 0 && (
@@ -169,12 +163,11 @@ function NewsDetailPage() {
                     </div>
                 </article>
 
-                {/* RELATED */}
                 {related.length > 0 && (
                     <section className="news-detail-related" data-testid="news-detail-related">
                         <div className="news-detail-related-header">
                             <span className="section-tag">Keep Reading</span>
-                            <h2>More from the hangar</h2>
+                            <h2>More journal notes</h2>
                             <div className="news-detail-related-line"></div>
                         </div>
 
