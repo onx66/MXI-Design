@@ -14,7 +14,7 @@ const defaultFeatures = [
 
 const FeatureList = ({ features = defaultFeatures }) => {
   return (
-    <div className="feature-section\" data-testid="feature-list">
+    <div className="feature-section" data-testid="feature-list">
       <h1>Key Features</h1>
       <div className="feature-grid">
         {features.map((item, i) => (

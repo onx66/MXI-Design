@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import msfsLogo from "../../assets/images/microsoft-flight-simulator.png";
+import xplaneLogo from "../../assets/images/xplane-software.png";
 import "./ProductsButton.css";
 
 function ProductsButton() {
@@ -54,11 +56,7 @@ function ProductsButton() {
             data-testid="products-msfs-btn"
           >
             <div className="option-icon msfs-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
+              <img className="option-logo msfs-logo" src={msfsLogo} alt="" aria-hidden="true" />
             </div>
             <div className="option-content">
               <span className="option-title">MSFS</span>
@@ -71,10 +69,7 @@ function ProductsButton() {
             data-testid="products-xplane-btn"
           >
             <div className="option-icon xplane-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M22 2L11 13" />
-                <path d="M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
+              <img className="option-logo xplane-logo" src={xplaneLogo} alt="" aria-hidden="true" />
             </div>
             <div className="option-content">
               <span className="option-title">X-Plane</span>

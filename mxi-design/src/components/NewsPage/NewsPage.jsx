@@ -1,9 +1,10 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useNews } from "../../context/NewsContext";
 import { formatNewsDate, sortNewsItems } from "../../data/newsData";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 import "./NewsPage.css";
 
 function truncateText(value, maxLength = 150) {
@@ -17,8 +18,10 @@ function truncateText(value, maxLength = 150) {
     return `${cleanText}...`;
 }
 
-function NewsPage() {
+function NewsPage({ showAllEntries = false }) {
     const navigate = useNavigate();
+    const width = useWindowWidth();
+    const [currentPage, setCurrentPage] = useState(0);
     const { newsItems } = useNews();
 
     const sorted = useMemo(
@@ -26,12 +29,57 @@ function NewsPage() {
         [newsItems]
     );
 
-    const featured = sorted[0];
-    const rest = sorted.slice(1);
+    const featured = showAllEntries ? null : sorted[0];
+    const listItems = showAllEntries ? sorted : sorted.slice(1);
+    const previewColumns = width <= 640 ? 1 : width <= 1050 ? 2 : 3;
+    const previewPageSize = previewColumns * 2;
+    const pageCount = showAllEntries
+        ? 1
+        : Math.max(1, Math.ceil(listItems.length / previewPageSize));
+    const hasPagination = !showAllEntries && listItems.length > 0;
+    const visibleListItems = showAllEntries
+        ? listItems
+        : listItems.slice(
+            currentPage * previewPageSize,
+            currentPage * previewPageSize + previewPageSize
+        );
+
+    useEffect(() => {
+        setCurrentPage(0);
+    }, [previewPageSize, listItems.length, showAllEntries]);
+
+    useEffect(() => {
+        setCurrentPage((page) => Math.min(page, pageCount - 1));
+    }, [pageCount]);
 
     const goToDetail = (n) => {
         navigate(`/news/${n.id}`);
     };
+
+    const goToAllNews = () => {
+        navigate("/news/all");
+    };
+
+    const goToNewsPage = (page) => {
+        setCurrentPage(Math.min(Math.max(page, 0), pageCount - 1));
+    };
+
+    const renderNewsCard = (n) => (
+        <button
+            key={n.id}
+            className="news-card"
+            onClick={() => goToDetail(n)}
+            data-testid={`news-card-${n.id}`}
+        >
+            <div className="news-card-image">
+                <img src={n.coverImage} alt={n.title} loading="lazy" />
+            </div>
+            <div className="news-card-body">
+                <h3>{n.title}</h3>
+                <p>{truncateText(n.summary, 260)}</p>
+            </div>
+        </button>
+    );
 
     return (
         <div className="news-page" data-testid="news-page">
@@ -43,14 +91,25 @@ function NewsPage() {
                     <div className="news-header-glow news-header-glow-2"></div>
 
                     <div className="news-header-inner">
-                        <span className="section-tag">MXI Journal</span>
+                        <span className="section-tag">
+                            {showAllEntries ? "MXI Archive" : "MXI Journal"}
+                        </span>
                         <h1>
-                            Notes from the <span className="gradient-text">design desk.</span>
+                            {showAllEntries ? (
+                                <>
+                                    All <span className="gradient-text">journal entries.</span>
+                                </>
+                            ) : (
+                                <>
+                                    Notes from the <span className="gradient-text">design desk.</span>
+                                </>
+                            )}
                         </h1>
                         <div className="news-header-line"></div>
                         <p>
-                            Project logs, release notes and behind-the-scenes thoughts from the
-                            scenery work I build for flight simulation.
+                            {showAllEntries
+                                ? "Every project note, release log and behind-the-scenes update in one place."
+                                : "Project logs, release notes and behind-the-scenes thoughts from the scenery work I build for flight simulation."}
                         </p>
                     </div>
                 </section>
@@ -100,40 +159,68 @@ function NewsPage() {
                     </section>
                 )}
 
-                {rest.length > 0 && (
-                    <section className="news-list" data-testid="news-list">
-                        {rest.map((n) => (
-                            <button
-                                key={n.id}
-                                className="news-card"
-                                onClick={() => goToDetail(n)}
-                                data-testid={`news-card-${n.id}`}
-                            >
-                                <div className="news-card-image">
-                                    <img src={n.coverImage} alt={n.title} loading="lazy" />
-                                    {n.category && (
-                                        <span className="news-card-cat">{n.category}</span>
-                                    )}
-                                </div>
-                                <div className="news-card-body">
-                                    <div className="news-meta news-meta-sm">
-                                        <span>{formatNewsDate(n.publishedAt)}</span>
-                                        {n.readTime && (
-                                            <>
-                                                <span className="news-meta-dot"></span>
-                                                <span>{n.readTime}</span>
-                                            </>
-                                        )}
-                                    </div>
-                                    <h3>{n.title}</h3>
-                                    <p>{n.summary}</p>
-                                    <span className="news-card-link">
-                                        Open entry
+                {listItems.length > 0 && (
+                    <section
+                        className={`news-list-section ${showAllEntries ? "news-list-section-all" : ""}`}
+                    >
+                        <div className="news-list-toolbar">
+                            <div>
+                                <span className="news-list-eyebrow">
+                                    {showAllEntries ? "Archive" : "More notes"}
+                                </span>
+                                <h2>{showAllEntries ? "All Entries" : "Recent Entries"}</h2>
+                            </div>
+
+                            {!showAllEntries && (
+                                <div className="news-list-actions">
+                                    <button
+                                        type="button"
+                                        className="news-view-all"
+                                        onClick={goToAllNews}
+                                    >
+                                        <span>View all entries</span>
                                         <i className="fa-solid fa-arrow-right"></i>
-                                    </span>
+                                    </button>
                                 </div>
-                            </button>
-                        ))}
+                            )}
+                        </div>
+
+                        {showAllEntries ? (
+                            <div className="news-list news-list-all" data-testid="news-list">
+                                {visibleListItems.map(renderNewsCard)}
+                            </div>
+                        ) : (
+                            <div className="news-list news-list-preview" data-testid="news-list">
+                                {visibleListItems.map(renderNewsCard)}
+                            </div>
+                        )}
+
+                        {hasPagination && (
+                            <div className="news-pagination" aria-label="Recent entries pages">
+                                {Array.from({ length: pageCount }, (_, index) => (
+                                    <button
+                                        key={index}
+                                        type="button"
+                                        className={`news-page-number ${currentPage === index ? "active" : ""}`}
+                                        onClick={() => goToNewsPage(index)}
+                                        aria-label={`Show page ${index + 1}`}
+                                        aria-current={currentPage === index ? "page" : undefined}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                ))}
+
+                                <button
+                                    type="button"
+                                    className="news-page-next"
+                                    onClick={() => goToNewsPage(currentPage + 1)}
+                                    disabled={currentPage >= pageCount - 1}
+                                    aria-label="Next recent entries page"
+                                >
+                                    <i className="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        )}
                     </section>
                 )}
             </main>
