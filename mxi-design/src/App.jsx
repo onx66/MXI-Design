@@ -34,6 +34,7 @@ export default function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/news" element={<NewsPage />} />
+              <Route path="/news/all" element={<NewsPage showAllEntries />} />
               <Route path="/news/:id" element={<NewsDetailPage />} />
               <Route path="/product-detail/:id" element={<ProductDetail />} />
             </Routes>
