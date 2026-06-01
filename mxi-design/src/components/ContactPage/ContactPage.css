@@ -188,6 +188,27 @@
     flex-shrink: 0;
 }
 
+.error-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    background: rgba(248, 113, 113, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    border-radius: 16px;
+    color: #fca5a5;
+    font-size: 15px;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
+.error-message svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -259,7 +280,8 @@
         border-radius: 24px;
     }
 
-    .success-message {
+    .success-message,
+    .error-message {
         padding: 14px 18px;
         font-size: 14px;
         border-radius: 14px;
