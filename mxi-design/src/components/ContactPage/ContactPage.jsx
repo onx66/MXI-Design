@@ -1,38 +1,43 @@
 import { useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { sendContactMessage } from "../../services/contactService";
 import "./ContactPage.css";
 
 function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        message: ""
+        message: "",
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
-        // Simüle edilmiş form gönderimi
-        setTimeout(() => {
-            setIsSubmitting(false);
+
+        try {
+            await sendContactMessage(formData);
             setSubmitStatus("success");
             setFormData({ name: "", email: "", message: "" });
-            
-            // 3 saniye sonra mesajı temizle
-            setTimeout(() => setSubmitStatus(null), 3000);
-        }, 1500);
+            setTimeout(() => setSubmitStatus(null), 4000);
+        } catch (error) {
+            setSubmitStatus({
+                type: "error",
+                message: error.message || "Message could not be sent. Please try again later.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -91,9 +96,9 @@ function ContactPage() {
                             />
                         </div>
 
-                        <button 
-                            type="submit" 
-                            className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+                        <button
+                            type="submit"
+                            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
                             disabled={isSubmitting}
                             data-testid="contact-submit-btn"
                         >
@@ -106,8 +111,8 @@ function ContactPage() {
                                 <>
                                     <span>Send</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M22 2L11 13"/>
-                                        <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                                        <path d="M22 2L11 13" />
+                                        <path d="M22 2l-7 20-4-9-9-4 20-7z" />
                                     </svg>
                                 </>
                             )}
@@ -116,9 +121,20 @@ function ContactPage() {
                         {submitStatus === "success" && (
                             <div className="success-message" data-testid="contact-success-message">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                                 <span>Your message has been sent successfully!</span>
+                            </div>
+                        )}
+
+                        {submitStatus?.type === "error" && (
+                            <div className="error-message" data-testid="contact-error-message">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 8v5" />
+                                    <path d="M12 16h.01" />
+                                </svg>
+                                <span>{submitStatus.message}</span>
                             </div>
                         )}
                     </form>
