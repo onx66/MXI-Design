@@ -1,8 +1,20 @@
 import "./PurchaseCard.css"
 
+const STORE_BUTTONS = [
+  { key: "orbx", label: "ORBX" },
+  { key: "simmarket", label: "Simmarket" },
+  { key: "iniBuilds", label: "iniBuilds" },
+  { key: "contrail", label: "Contrail" },
+];
 
+const PurchaseCard = ({ pricing, storeLinks = {} }) => {
+  const visibleStoreLinks = STORE_BUTTONS
+    .map((item) => ({
+      ...item,
+      url: String(storeLinks[item.key] || "").trim(),
+    }))
+    .filter((item) => item.url);
 
-const PurchaseCard = ({ pricing }) => {
   return (
     <div className="purchase-card">
       <h3>Purchase</h3>
@@ -27,12 +39,21 @@ const PurchaseCard = ({ pricing }) => {
         ))}
       </div>
 
-      <div className="product-marketing">
-        <button className="add-to-cart">ORBX</button>
-        <button className="add-to-cart">Simmarket</button>
-        <button className="add-to-cart">iniBuilds</button>
-        <button className="add-to-cart">Contrail</button>
-      </div>
+      {visibleStoreLinks.length > 0 && (
+        <div className="product-marketing">
+          {visibleStoreLinks.map((item) => (
+            <a
+              key={item.key}
+              className="add-to-cart"
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
 
       <p className="requirement">
         This product requires Microsoft Flight Simulator 2024 to function.
