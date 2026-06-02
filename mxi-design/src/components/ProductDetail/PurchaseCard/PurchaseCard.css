@@ -42,6 +42,9 @@
 }
 
 .add-to-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 16px;
   border-radius: 10px;
   border: none;
@@ -50,6 +53,7 @@
       #0092b8 100%);
   color: white;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.2s ease;
 }

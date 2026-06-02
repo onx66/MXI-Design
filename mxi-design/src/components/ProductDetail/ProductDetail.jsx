@@ -21,9 +21,6 @@ const getSimulatorLabels = (product) => {
     labels.push("Microsoft Flight Simulator", "Microsoft Flight Simulator 2024");
   }
 
-  if (platforms.includes("XPLANE")) {
-    labels.push("X-Plane");
-  }
 
   return labels;
 };
@@ -76,7 +73,7 @@ function ProductDetail() {
           <FeatureList features={product.features} />
         </div>
         <div className="right">
-          <PurchaseCard pricing={product.pricing} />
+          <PurchaseCard pricing={product.pricing} storeLinks={product.storeLinks} />
         </div>
       </div>
       <div className="screen-shots-container">

@@ -52,6 +52,13 @@ const normalizePlatforms = (platforms) => {
   ];
 };
 
+const normalizeStoreLinks = (product) => ({
+  orbx: product.orbxLink || product.orbx_link || "",
+  simmarket: product.simmarketLink || product.simmarket_link || "",
+  iniBuilds: product.iniBuildsLink || product.inibuilds_link || product.ini_builds_link || "",
+  contrail: product.contrailLink || product.contrail_link || "",
+});
+
 export const normalizeAirportProduct = (product, index = 0) => {
   const images = normalizeImages(product);
   const mainImage = product.mainImage || product.main_image || "";
@@ -75,6 +82,7 @@ export const normalizeAirportProduct = (product, index = 0) => {
     color: product.color || "#FFD84D",
     videourl: product.videourl || product.videoUrl || "",
     pricing: normalizePricing(product),
+    storeLinks: normalizeStoreLinks(product),
     generalDesc: product.generalDesc || "",
     features: Array.isArray(product.features) ? product.features : [],
     platforms: normalizePlatforms(product.platforms),
