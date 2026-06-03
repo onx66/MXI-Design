@@ -43,11 +43,23 @@ const normalizePlatforms = (platforms) => {
     return [];
   }
 
+  const compactValues = platforms.map((platform) =>
+    String(platform).trim().toUpperCase().replace(/[\s-]/g, "")
+  );
+
+  if (compactValues.includes("MSFS")) {
+    return ["MSFS2020", "MSFS2024"];
+  }
+
   return [
     ...new Set(
-      platforms
-        .map((platform) => String(platform).trim().toUpperCase().replace("-", ""))
-        .filter((platform) => platform === "MSFS" || platform === "XPLANE")
+      compactValues
+        .flatMap((platform) => {
+          if (platform === "MSFS2020" || platform === "MSFS2024" || platform === "XPLANE") {
+            return [platform];
+          }
+          return [];
+        })
     ),
   ];
 };

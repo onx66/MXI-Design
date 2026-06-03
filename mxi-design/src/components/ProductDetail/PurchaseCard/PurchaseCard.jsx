@@ -54,7 +54,9 @@ const PurchaseCard = ({ pricing, storeLinks = {} }) => {
           ))}
         </div>
       )}
-
+      <p className="requirement">
+        Also available on Microsoft Marketplace!
+      </p>
       <p className="requirement">
         This product requires Microsoft Flight Simulator 2024 to function.
       </p>

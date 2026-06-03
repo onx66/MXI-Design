@@ -178,7 +178,9 @@
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 20px;
 }
-
+.footer-text{
+    width: 325px;
+}
 .map-container {
     width: 100%;
     margin: 0 auto;

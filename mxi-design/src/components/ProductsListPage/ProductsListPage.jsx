@@ -5,7 +5,7 @@ import "./ProductsListPage.css";
 import { useProducts } from "../../context/ProductContext";
 
 const getProductPlatforms = (product) => {
-    return product.platforms?.length ? product.platforms : ["MSFS", "XPLANE"];
+    return product.platforms?.length ? product.platforms : ["MSFS2020", "MSFS2024"];
 };
 
 const getCategoryPlatform = (category) => {
@@ -14,7 +14,23 @@ const getCategoryPlatform = (category) => {
 };
 
 const getPlatformLabel = (platform) => {
-    return platform === "XPLANE" ? "X-Plane" : "MSFS";
+    if (platform === "MSFS2020") return "MSFS2020";
+    if (platform === "MSFS2024") return "MSFS 2024";
+    return "X-Plane";
+};
+
+const productMatchesCategory = (product, categoryPlatform) => {
+    const platforms = getProductPlatforms(product);
+
+    if (categoryPlatform === "MSFS") {
+        return platforms.includes("MSFS2020") || platforms.includes("MSFS2024");
+    }
+
+    if (categoryPlatform === "XPLANE") {
+        return platforms.includes("XPLANE");
+    }
+
+    return true;
 };
 
 function ProductsListPage() {
@@ -25,7 +41,7 @@ function ProductsListPage() {
 
 
     const filteredProducts = categoryPlatform
-        ? products.filter((product) => getProductPlatforms(product).includes(categoryPlatform))
+        ? products.filter((product) => productMatchesCategory(product, categoryPlatform))
         : products;
 
     const categoryTitle = category
