@@ -10,19 +10,18 @@ import Footer from "../Footer/Footer.jsx";
 import { useProducts } from "../../context/ProductContext.jsx";
 
 const getProductPlatforms = (product) => {
-  return product.platforms?.length ? product.platforms : ["MSFS", "XPLANE"];
+  return product.platforms?.length ? product.platforms : ["MSFS2020", "MSFS2024"];
 };
 
 const getSimulatorLabels = (product) => {
   const platforms = getProductPlatforms(product);
-  const labels = [];
+  const labels = platforms.map((platform) => {
+    if (platform === "MSFS2020") return "MSFS2020";
+    if (platform === "MSFS2024") return "MSFS 2024";
+    return "X-Plane";
+  });
 
-  if (platforms.includes("MSFS")) {
-    labels.push("Microsoft Flight Simulator", "Microsoft Flight Simulator 2024");
-  }
-
-
-  return labels;
+  return [...new Set(labels)];
 };
 
 function ProductDetail() {
@@ -49,12 +48,7 @@ function ProductDetail() {
         <img src={product.img} alt={product.title} className="hero-bg" />
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <img
-            className="product-detail-logo"
-            src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png"
-            alt="MXI Design Logo"
-            data-testid="header-logo"
-          />
+
           <div className={`airport-code code-${product.code}`}>
             {product.code}
           </div>
@@ -65,10 +59,7 @@ function ProductDetail() {
       </div>
       <div className="detail-container">
         <div className="left">
-          <div className="discount-banner">
-            This product is discounted by <strong>40%</strong> with the
-            OrbX End of Year Sale 2025 (40%).
-          </div>
+       
           <p className="description">{product.desc}</p>
           <FeatureList features={product.features} />
         </div>

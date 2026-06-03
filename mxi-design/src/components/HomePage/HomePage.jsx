@@ -1,7 +1,6 @@
 import AboutUs from "../AboutUs/AboutUs.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Header from "../Header/Header.jsx";
-import ProductDetail from "../ProductDetail/ProductDetail.jsx";
 import Slider from "../Slider/Slider.jsx";
 import WorldMap from "../WorldMap/WorldMap.jsx";
 

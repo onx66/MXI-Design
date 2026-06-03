@@ -5,7 +5,7 @@ function Footer() {
         <div>
             <div className="footer">
                 <div className="footer-text">
-                    <h2>© MXI Design, 2025</h2>
+                    <h2>© MXI Design, 2018</h2>
                 </div>
                 <div className="footer-logo">
                     <img src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_favicon-150x150.png" />
