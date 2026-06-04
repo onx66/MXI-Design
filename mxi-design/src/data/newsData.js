@@ -111,6 +111,19 @@ function escapeHtml(value) {
         .replaceAll("'", "&#039;");
 }
 
+function isSafeImageUrl(value) {
+    const url = String(value || "").trim();
+    if (!url) return false;
+    if (url.startsWith("/")) return true;
+
+    try {
+        const parsed = new URL(url);
+        return parsed.protocol === "http:" || parsed.protocol === "https:";
+    } catch {
+        return false;
+    }
+}
+
 function formatPlainBlock(block) {
     const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
     const isList = lines.length > 0 && lines.every((line) => line.startsWith("- "));
@@ -128,10 +141,47 @@ function formatPlainBlock(block) {
     return `<p>${escapeHtml(block.trim()).replaceAll("\n", "<br />")}</p>`;
 }
 
+function parseStructuredContent(content) {
+    try {
+        const parsed = JSON.parse(content);
+        if (parsed?.type === "mxi-news-content" && Array.isArray(parsed.blocks)) {
+            return parsed.blocks;
+        }
+    } catch {
+        return null;
+    }
+
+    return null;
+}
+
+function formatStructuredBlock(block) {
+    if (block?.type === "image") {
+        if (!isSafeImageUrl(block.url)) return "";
+
+        const url = escapeHtml(String(block.url).trim());
+        const alt = escapeHtml(block.alt || "News content image");
+        return `<figure class="news-content-image"><img src="${url}" alt="${alt}" loading="lazy" /></figure>`;
+    }
+
+    if (block?.type === "text" && String(block.text || "").trim()) {
+        return String(block.text)
+            .split(/\n\s*\n/)
+            .map(formatPlainBlock)
+            .join("");
+    }
+
+    return "";
+}
+
 export function formatNewsContent(content) {
     if (!content) return "";
     const trimmed = String(content).trim();
     if (!trimmed) return "";
+
+    const structuredBlocks = parseStructuredContent(trimmed);
+    if (structuredBlocks) {
+        return structuredBlocks.map(formatStructuredBlock).join("");
+    }
 
     if (/<\/?(p|h2|h3|ul|ol|li|blockquote|strong|em|a|img|br|code)\b/i.test(trimmed)) {
         return trimmed;
