@@ -278,6 +278,22 @@ function WorldMap() {
   return (
     <div className="world-map-shell">
       <div ref={mapContainer} className="world-map" />
+      <div
+        className="map-pitch-guide"
+        role="note"
+        aria-label="Right-click and drag down to tilt the map into 3D view"
+      >
+        <div className="map-pitch-guide-visual" aria-hidden="true">
+          <span className="map-pitch-mouse">
+            <span className="map-pitch-mouse-button"></span>
+          </span>
+          <span className="map-pitch-drag-arrow"></span>
+        </div>
+        <div className="map-pitch-guide-copy">
+          <strong>3D View</strong>
+          <span>Right-click + drag down</span>
+        </div>
+      </div>
       {statusText && (
         <div className={`world-map-status${error ? " is-error" : ""}`}>
           {statusText}
