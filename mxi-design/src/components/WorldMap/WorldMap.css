@@ -8,6 +8,163 @@
   height: 730px;
 }
 
+.map-pitch-guide {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 184px;
+  padding: 12px 14px;
+  border: 1px solid rgba(24, 224, 208, 0.34);
+  border-radius: 8px;
+  background: rgba(8, 20, 37, 0.82);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.map-pitch-guide-visual {
+  position: relative;
+  width: 32px;
+  height: 62px;
+  flex: 0 0 32px;
+}
+
+.map-pitch-mouse {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 24px;
+  height: 38px;
+  border: 1.5px solid rgba(255, 255, 255, 0.78);
+  border-radius: 12px;
+  animation: mapPitchMouseDrag 2.4s ease-in-out infinite;
+}
+
+.map-pitch-mouse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.map-pitch-mouse-button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 8px;
+  height: 10px;
+  border-radius: 2px 6px 2px 2px;
+  background: #18e0d0;
+  box-shadow: 0 0 0 0 rgba(24, 224, 208, 0.55);
+  animation: mapPitchRightClick 2.4s ease-in-out infinite;
+}
+
+.map-pitch-drag-arrow {
+  position: absolute;
+  left: 15px;
+  bottom: 3px;
+  width: 2px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(24, 224, 208, 0), #18e0d0);
+  animation: mapPitchArrow 2.4s ease-in-out infinite;
+}
+
+.map-pitch-drag-arrow::before,
+.map-pitch-drag-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: #18e0d0;
+}
+
+.map-pitch-drag-arrow::before {
+  right: 0;
+  transform: rotate(45deg);
+  transform-origin: right center;
+}
+
+.map-pitch-drag-arrow::after {
+  left: 0;
+  transform: rotate(-45deg);
+  transform-origin: left center;
+}
+
+.map-pitch-guide-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  font-family: Inter, sans-serif;
+  text-align: left;
+}
+
+.map-pitch-guide-copy strong {
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.map-pitch-guide-copy span {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+@keyframes mapPitchMouseDrag {
+  0%,
+  24%,
+  100% {
+    transform: translateY(0);
+  }
+
+  52%,
+  72% {
+    transform: translateY(13px);
+  }
+}
+
+@keyframes mapPitchRightClick {
+  0%,
+  16%,
+  100% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 0 rgba(24, 224, 208, 0.5);
+  }
+
+  28%,
+  72% {
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(24, 224, 208, 0);
+  }
+}
+
+@keyframes mapPitchArrow {
+  0%,
+  22%,
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  40%,
+  72% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .world-map-status {
   position: absolute;
   left: 50%;
@@ -103,4 +260,16 @@
   outline-offset: 4px;
 }
 
+@media (max-width: 768px), (hover: none) {
+  .map-pitch-guide {
+    display: none;
+  }
+}
 
+@media (prefers-reduced-motion: reduce) {
+  .map-pitch-mouse,
+  .map-pitch-mouse-button,
+  .map-pitch-drag-arrow {
+    animation: none;
+  }
+}
