@@ -63,7 +63,7 @@ function Slider() {
                   </h1>
                 )}
 
-                <p>{item.desc}</p>
+                <p className="slider-product-description">{item.desc}</p>
                 <MoreInfoButton productId={item.id ?? index} />
               </div>
             </div>

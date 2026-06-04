@@ -90,10 +90,15 @@ body {
 }
 
 .product-description {
+    display: -webkit-box;
+    overflow: hidden;
     font-size: 16px;
     line-height: 1.7;
     color: #a8b6cf;
     max-width: 440px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
 }
 
 .product-platforms {
