@@ -305,6 +305,17 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.news-detail-content .news-content-image {
+    margin: 28px 0;
+}
+
+.news-detail-content .news-content-image img {
+    display: block;
+    margin: 0;
+    max-height: 520px;
+    object-fit: cover;
+}
+
 .news-detail-content code {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
