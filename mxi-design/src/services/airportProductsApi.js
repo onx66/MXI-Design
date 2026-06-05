@@ -88,7 +88,7 @@ export const normalizeAirportProduct = (product, index = 0) => {
     title: product.title || "",
     subtitle: product.subtitle || "",
     desc: product.desc || product.description || "",
-    welcomeText: product.welcomeText || "",
+    welcomeText: product.welcomeText || product.welcome_text || "",
     lat: toNumber(product.lat, 0),
     lng: toNumber(product.lng, 0),
     color: product.color || "#FFD84D",
