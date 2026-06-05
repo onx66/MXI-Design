@@ -83,6 +83,11 @@ function ProductsListPage() {
                         <p className="product-description">
                             {product.desc}
                         </p>
+                        {product.welcomeText && (
+                            <p className="product-welcome-text">
+                                {product.welcomeText}
+                            </p>
+                        )}
                         <div className="product-platforms">
                             {getProductPlatforms(product).map((platform) => (
                                 <span className="platform" key={platform}>{getPlatformLabel(platform)}</span>

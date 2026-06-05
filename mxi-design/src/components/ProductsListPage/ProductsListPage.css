@@ -92,6 +92,7 @@ body {
 .product-description {
     display: -webkit-box;
     overflow: hidden;
+    margin: 10px 0 8px;
     font-size: 16px;
     line-height: 1.7;
     color: #a8b6cf;
@@ -99,6 +100,20 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+}
+
+.product-welcome-text {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0 0 14px;
+    max-width: 440px;
+    color: #56eadc;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
 }
 
 .product-platforms {
@@ -139,5 +154,8 @@ body {
 .product-description {
     font-size: 12px;
    
+}
+.product-welcome-text {
+    font-size: 12px;
 }
 }
