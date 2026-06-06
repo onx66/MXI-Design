@@ -5,6 +5,7 @@ import ProductsButton from "../ProductsButton/ProductsButton";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { useSearch } from "../../context/SearchContext";
 import { useProducts } from "../../context/ProductContext";
+import mxiSiteLogo from "../../assets/images/mxi-sitelogo.png";
 import "./Header.css";
 
 function Header() {
@@ -63,7 +64,7 @@ function Header() {
             <div className="header-left">
                 <img
                     className="logo"
-                    src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png"
+                    src={mxiSiteLogo}
                     alt="MXI Design Logo"
                     data-testid="header-logo"
                 />

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import mxiSiteLogo from "../../assets/images/mxi-sitelogo.png";
 import "./AboutUsPage.css";
 
 function AboutUsPage() {
@@ -121,7 +122,7 @@ function AboutUsPage() {
                             <div className="about-story-card-inner">
                                 <img
                                     className="about-story-logo"
-                                    src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png"
+                                    src={mxiSiteLogo}
                                     alt="MXI Design Logo"
                                 />
                                 <div className="about-story-badge">
