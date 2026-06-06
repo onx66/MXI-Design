@@ -1,4 +1,5 @@
 import "./Footer.css";
+import mxiFavicon from "../../assets/images/mxi-favicon-150x150.png";
 
 function Footer() {
     return (
@@ -8,7 +9,7 @@ function Footer() {
                     <h2>© MXI Design, 2018</h2>
                 </div>
                 <div className="footer-logo">
-                    <img src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_favicon-150x150.png" />
+                    <img src={mxiFavicon} alt="MXI Design" />
                 </div>
                 <div className="card">
                     <a href="https://www.instagram.com/mxi.design/?hl=tr" className="socialContainer containerOne">

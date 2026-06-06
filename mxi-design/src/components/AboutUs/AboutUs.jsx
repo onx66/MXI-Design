@@ -2,6 +2,7 @@
 import "./AboutUs.css";
 import xplane from "../../assets/images/xplane-software.png"
 import mfs from "../../assets/images/microsoft-flight-simulator.png"
+import mxiSiteLogo from "../../assets/images/mxi-sitelogo.png"
 
 
 function AboutUs() {
@@ -25,7 +26,7 @@ function AboutUs() {
                 </div>
                 <div className="about-us-logo">
                     <div className="about-us-logo-img">
-                        <img className="logo" src="https://mxi-design.com/wp-content/uploads/2025/03/mxi_sitelogo.png" />
+                        <img className="logo" src={mxiSiteLogo} alt="MXI Design Logo" />
                     </div>
                     <div className="about-us-logo-text">
                         <div className="about-us-user">
