@@ -1,4 +1,4 @@
-import "./PurchaseCard.css"
+import "./PurchaseCard.css";
 
 const STORE_BUTTONS = [
   { key: "orbx", label: "ORBX" },
@@ -6,6 +6,24 @@ const STORE_BUTTONS = [
   { key: "iniBuilds", label: "iniBuilds" },
   { key: "contrail", label: "Contrail" },
 ];
+
+const getCurrencySymbol = (currency = "USD") => {
+  const normalizedCurrency = String(currency).toUpperCase();
+
+  if (normalizedCurrency === "EUR") return "\u20ac";
+  if (normalizedCurrency === "GBP") return "\u00a3";
+
+  return "$";
+};
+
+const formatPriceAmount = (amount) => {
+  const normalizedAmount = typeof amount === "string"
+    ? amount.replace(",", ".")
+    : amount;
+  const numericAmount = Number(normalizedAmount);
+
+  return Number.isFinite(numericAmount) ? numericAmount.toFixed(2) : "0.00";
+};
 
 const PurchaseCard = ({ pricing, storeLinks = {} }) => {
   const visibleStoreLinks = STORE_BUTTONS
@@ -20,7 +38,10 @@ const PurchaseCard = ({ pricing, storeLinks = {} }) => {
       <h3>Purchase</h3>
 
       <div className="price">
-        <span className="current">${pricing.main.amount}</span>
+        <span className="current">
+          {getCurrencySymbol(pricing.main.currency)}
+          {formatPriceAmount(pricing.main.amount)}
+        </span>
         <span className="currency">{pricing.main.currency}</span>
       </div>
 
@@ -30,9 +51,8 @@ const PurchaseCard = ({ pricing, storeLinks = {} }) => {
         {pricing.others.map((price, index) => (
           <span key={index}>
             <span className="current-other">
-              {price.currency === "EUR" ? "€" :
-                price.currency === "GBP" ? "£" : "$"}
-              {price.amount}
+              {getCurrencySymbol(price.currency)}
+              {formatPriceAmount(price.amount)}
             </span>
             <span className="currency-other">{price.currency}</span>
           </span>
