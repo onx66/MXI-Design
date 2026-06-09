@@ -1,16 +1,62 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import msfsLogo from "../../assets/images/microsoft-flight-simulator.png";
 import xplaneLogo from "../../assets/images/xplane-software.png";
 import "./ProductsButton.css";
 
-function ProductsButton() {
+function ProductsButton({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleCategoryClick = (category) => {
+  const isHoverPointer = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  const clearCloseTimeout = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
+
+  const openDropdown = useCallback(() => {
+    clearCloseTimeout();
+    setIsOpen(true);
+  }, [clearCloseTimeout]);
+
+  const closeDropdown = useCallback(() => {
+    clearCloseTimeout();
     setIsOpen(false);
+  }, [clearCloseTimeout]);
+
+  const scheduleCloseDropdown = useCallback(() => {
+    clearCloseTimeout();
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setIsOpen(false);
+      closeTimeoutRef.current = null;
+    }, 150);
+  }, [clearCloseTimeout]);
+
+  const handleTriggerClick = () => {
+    if (isHoverPointer()) {
+      openDropdown();
+      return;
+    }
+
+    setIsOpen((currentIsOpen) => !currentIsOpen);
+  };
+
+  const handleBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      closeDropdown();
+    }
+  };
+
+  const handleCategoryClick = (category) => {
+    closeDropdown();
+    onNavigate?.();
     navigate(`/products/${category.toLowerCase()}`);
   };
 
@@ -18,18 +64,31 @@ function ProductsButton() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
-        setIsOpen(false);
+        closeDropdown();
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      clearCloseTimeout();
+    };
+  }, [clearCloseTimeout, closeDropdown]);
 
   return (
-    <div className="products-dropdown-container" ref={containerRef}>
+    <div
+      className="products-dropdown-container"
+      ref={containerRef}
+      onMouseEnter={openDropdown}
+      onMouseLeave={scheduleCloseDropdown}
+      onFocus={openDropdown}
+      onBlur={handleBlur}
+    >
       <button
         className={`products-dropdown-trigger ${isOpen ? 'active' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        onClick={handleTriggerClick}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
         data-testid="products-btn"
       >
         <span className="products-dropdown-text">Products</span>

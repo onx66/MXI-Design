@@ -17,10 +17,24 @@ header {
     flex-shrink: 0;
 }
 
+.logo-home-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.logo-home-link:focus-visible {
+    outline: 2px solid rgba(255, 216, 77, 0.8);
+    outline-offset: 6px;
+    border-radius: 8px;
+}
+
 .header-left .logo {
     width: 90px;
     height: auto;
-    cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -242,7 +256,8 @@ header {
 }
 
 .mobile-nav.open {
-    max-height: 400px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
     opacity: 1;
     padding: 24px;
 }

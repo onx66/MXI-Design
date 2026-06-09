@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import "./ProductDetail.css";
@@ -28,6 +29,10 @@ function ProductDetail() {
   const { id } = useParams();
   const { getProductByRouteId, isLoading } = useProducts();
   const product = getProductByRouteId(id);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [id]);
 
   if (!product) {
     return (

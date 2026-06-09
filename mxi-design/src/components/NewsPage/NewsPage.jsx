@@ -22,7 +22,7 @@ function NewsPage({ showAllEntries = false }) {
     const navigate = useNavigate();
     const width = useWindowWidth();
     const [currentPage, setCurrentPage] = useState(0);
-    const { newsItems } = useNews();
+    const { newsItems, isLoading, error } = useNews();
 
     const sorted = useMemo(
         () => sortNewsItems(newsItems),
@@ -114,7 +114,21 @@ function NewsPage({ showAllEntries = false }) {
                     </div>
                 </section>
 
-                {sorted.length === 0 && (
+                {isLoading && sorted.length === 0 && (
+                    <section className="news-state" data-testid="news-loading-state">
+                        <span className="news-spinner"></span>
+                        <span>Loading journal entries...</span>
+                    </section>
+                )}
+
+                {!isLoading && error && sorted.length === 0 && (
+                    <section className="news-state news-state-error" data-testid="news-error-state">
+                        <i className="fa-solid fa-triangle-exclamation"></i>
+                        <span>Journal entries could not be loaded.</span>
+                    </section>
+                )}
+
+                {!isLoading && !error && sorted.length === 0 && (
                     <section className="news-state" data-testid="news-empty-state">
                         <i className="fa-solid fa-pen-nib"></i>
                         <span>No journal entries have been published yet.</span>

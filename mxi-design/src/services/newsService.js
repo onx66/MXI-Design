@@ -1,8 +1,4 @@
-import { newsData } from "../data/newsData";
-
-const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8001/api"
-).replace(/\/$/, "");
+const API_BASE_URL = "/api";
 
 export function normalizeNewsItem(item = {}) {
   return {
@@ -41,5 +37,3 @@ export async function fetchNewsItems({ signal } = {}) {
 
   return data.map(normalizeNewsItem);
 }
-
-export const mockNews = newsData;

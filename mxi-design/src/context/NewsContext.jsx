@@ -1,11 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { getNewsById, newsData, sortNewsItems } from "../data/newsData";
+import { getNewsById, sortNewsItems } from "../data/newsData";
 import { fetchNewsItems } from "../services/newsService";
 
 const NewsContext = createContext(null);
 
 export function NewsProvider({ children }) {
-    const [newsItems, setNewsItems] = useState(newsData);
+    const [newsItems, setNewsItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -21,7 +21,7 @@ export function NewsProvider({ children }) {
                 setError(null);
             } catch (err) {
                 if (err.name === "AbortError") return;
-                setNewsItems(newsData);
+                setNewsItems([]);
                 setError(err);
             } finally {
                 if (showLoading && !signal?.aborted) {

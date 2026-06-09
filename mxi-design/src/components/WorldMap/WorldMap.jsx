@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./WorldMap.css";
@@ -37,7 +38,7 @@ const createPopupHTML = (item) => {
   const subtitle = item.subtitle || "";
 
   return `
-    <div class="airport-popup" style="--popup-accent: ${getAccentColor(item.color)}">
+    <div class="airport-popup" style="--popup-accent: ${getAccentColor(item.color)}" role="button" tabindex="0" aria-label="Open ${escapeHTML(item.title || item.code || "product")} detail">
       <div class="popup-dot"></div>
       <div class="popup-content">
         <div class="popup-title">${escapeHTML(item.title || item.code || "MXI Design")}</div>
@@ -122,6 +123,7 @@ const bindPitchControls = (map) => {
 
 function WorldMap() {
   const { products, isLoading, error } = useProducts();
+  const navigate = useNavigate();
   const mapContainer = useRef(null);
   const mapInstance = useRef(null);
   const activePopupRef = useRef(null);
@@ -231,6 +233,19 @@ function WorldMap() {
             .setLngLat(coordinates)
             .addTo(map);
 
+          const popupCard = popup.getElement().querySelector(".airport-popup");
+          const goToProductDetail = () => {
+            navigate(`/product-detail/${encodeURIComponent(String(item.id))}`);
+          };
+
+          popupCard?.addEventListener("click", goToProductDetail);
+          popupCard?.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              goToProductDetail();
+            }
+          });
+
           activePopupRef.current = popup;
           map.easeTo({ center: coordinates, duration: 500 });
         });
@@ -265,7 +280,7 @@ function WorldMap() {
       map.off("load", renderProductMarkers);
       clearMarkers();
     };
-  }, [productLocations]);
+  }, [navigate, productLocations]);
 
   const statusText = isLoading
     ? "Loading airport locations..."

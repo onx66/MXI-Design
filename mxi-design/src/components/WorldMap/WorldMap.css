@@ -209,8 +209,19 @@
   border-radius: 5px 18px 18px 18px;
   border: 2px solid var(--popup-accent, #18e0d0);
   text-align: start;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.airport-popup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.airport-popup:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
 
 .popup-dot {
   margin-top: 6px;
