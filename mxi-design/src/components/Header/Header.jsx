@@ -62,12 +62,19 @@ function Header() {
     return (
         <header data-testid="main-header">
             <div className="header-left">
-                <img
-                    className="logo"
-                    src={mxiSiteLogo}
-                    alt="MXI Design Logo"
-                    data-testid="header-logo"
-                />
+                <button
+                    type="button"
+                    className="logo-home-link"
+                    onClick={goToHome}
+                    aria-label="Go to homepage"
+                >
+                    <img
+                        className="logo"
+                        src={mxiSiteLogo}
+                        alt="MXI Design Logo"
+                        data-testid="header-logo"
+                    />
+                </button>
             </div>
 
             {width >= 768 && (
@@ -75,7 +82,7 @@ function Header() {
                     <ul className="menu">
                         <li data-testid="menu-home" onClick={goToHome}>Home</li>
                         <li data-testid="menu-products">
-                            <ProductsButton />
+                            <ProductsButton onNavigate={() => setIsMenuOpen(false)} />
                         </li>
                         <li data-testid="menu-news" onClick={goToNews}>News</li>
                         <li data-testid="menu-partners">Partners</li>

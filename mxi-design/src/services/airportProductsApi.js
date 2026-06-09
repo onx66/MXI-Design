@@ -1,17 +1,20 @@
-const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8001/api"
-).replace(/\/$/, "");
+const API_BASE_URL = "/api";
 
 const fallbackImageByCode = {
-  LTFJ: new URL("../assets/images/sabiha-g\u00f6k\u00e7en-airport.jpg", import.meta.url).href,
+  LTFJ: new URL("../assets/images/sabiha-gökçen-airport.jpg", import.meta.url).href,
   LGKP: new URL("../assets/images/karpothos-airport.jpg", import.meta.url).href,
   EYKA: new URL("../assets/images/kaunas-airport.jpg", import.meta.url).href,
-  ESOE: new URL("../assets/images/\u00f6rebro-airport.jpg", import.meta.url).href,
+  ESOE: new URL("../assets/images/örebro-airport.jpg", import.meta.url).href,
 };
 
 const toNumber = (value, fallback = 0) => {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : fallback;
+};
+
+const toTimestamp = (value) => {
+  const timestamp = Date.parse(value || "");
+  return Number.isFinite(timestamp) ? timestamp : 0;
 };
 
 const normalizePricing = (product) => {
@@ -80,6 +83,7 @@ export const normalizeAirportProduct = (product, index = 0) => {
   return {
     id: product.id ?? product.code ?? index,
     apiId: product.id ?? null,
+    createdAt: product.createdAt || product.created_at || "",
     img,
     mainImage,
     images,
@@ -119,5 +123,7 @@ export async function fetchAirportProducts({ signal } = {}) {
     throw new Error("Airport products response must be an array.");
   }
 
-  return data.map(normalizeAirportProduct);
+  return data
+    .map(normalizeAirportProduct)
+    .sort((a, b) => toTimestamp(b.createdAt) - toTimestamp(a.createdAt));
 }

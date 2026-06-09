@@ -84,7 +84,7 @@ export function sortNewsItems(items) {
     );
 }
 
-export function getNewsById(id, items = newsData) {
+export function getNewsById(id, items = []) {
     return items.find((n) => String(n.id) === String(id)) || null;
 }
 
