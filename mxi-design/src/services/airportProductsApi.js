@@ -99,6 +99,7 @@ export const normalizeAirportProduct = (product, index = 0) => {
     videourl: product.videourl || product.videoUrl || "",
     pricing: normalizePricing(product),
     storeLinks: normalizeStoreLinks(product),
+    availableOnSimatlas: (product.availableOnSimatlas ?? product.available_on_simatlas) === true,
     generalDesc: product.generalDesc || "",
     features: Array.isArray(product.features) ? product.features : [],
     platforms: normalizePlatforms(product.platforms),
