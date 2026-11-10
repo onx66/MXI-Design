@@ -134,8 +134,12 @@ function formatPlainBlock(block) {
             .join("")}</ul>`;
     }
 
+    if (lines.length === 1 && lines[0].startsWith("# ")) {
+        return `<h2 class="news-content-heading">${escapeHtml(lines[0].slice(2))}</h2>`;
+    }
+
     if (lines.length === 1 && lines[0].startsWith("## ")) {
-        return `<h3>${escapeHtml(lines[0].slice(3))}</h3>`;
+        return `<h2 class="news-content-heading">${escapeHtml(lines[0].slice(3))}</h2>`;
     }
 
     return `<p>${escapeHtml(block.trim()).replaceAll("\n", "<br />")}</p>`;
@@ -161,6 +165,10 @@ function formatStructuredBlock(block) {
         const url = escapeHtml(String(block.url).trim());
         const alt = escapeHtml(block.alt || "News content image");
         return `<figure class="news-content-image"><img src="${url}" alt="${alt}" loading="lazy" /></figure>`;
+    }
+
+    if (block?.type === "heading" && String(block.text || "").trim()) {
+        return `<h2 class="news-content-heading">${escapeHtml(block.text)}</h2>`;
     }
 
     if (block?.type === "text" && String(block.text || "").trim()) {

@@ -25,7 +25,7 @@ const formatPriceAmount = (amount) => {
   return Number.isFinite(numericAmount) ? numericAmount.toFixed(2) : "0.00";
 };
 
-const PurchaseCard = ({ pricing, storeLinks = {} }) => {
+const PurchaseCard = ({ pricing, storeLinks = {}, availableOnSimatlas = false }) => {
   const visibleStoreLinks = STORE_BUTTONS
     .map((item) => ({
       ...item,
@@ -73,6 +73,20 @@ const PurchaseCard = ({ pricing, storeLinks = {} }) => {
             </a>
           ))}
         </div>
+      )}
+      {availableOnSimatlas && (
+        <a
+          className="simatlas-badge"
+          href="https://simatlas.net/?promo=MXI"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="simatlas-badge"
+        >
+          <img
+            src="https://simatlas.net/icons/availableonsimatlas_dark.svg"
+            alt="Available on SimAtlas"
+          />
+        </a>
       )}
       <p className="requirement">
         Also available on Microsoft Marketplace!

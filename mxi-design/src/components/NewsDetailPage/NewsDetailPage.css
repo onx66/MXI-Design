@@ -248,11 +248,18 @@
 }
 
 .news-detail-content h2 {
-    font-size: 28px;
+    font-size: 34px;
 }
 
 .news-detail-content h3 {
     font-size: 22px;
+}
+
+.news-detail-content .news-content-heading {
+    font-size: clamp(30px, 3vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 44px 0 18px;
 }
 
 .news-detail-content ul,
@@ -564,7 +571,7 @@
     }
 
     .news-detail-content h2 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .news-detail-content h3 {

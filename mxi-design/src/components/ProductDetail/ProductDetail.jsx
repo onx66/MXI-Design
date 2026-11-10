@@ -69,7 +69,7 @@ function ProductDetail() {
           <FeatureList features={product.features} />
         </div>
         <div className="right">
-          <PurchaseCard pricing={product.pricing} storeLinks={product.storeLinks} />
+          <PurchaseCard pricing={product.pricing} storeLinks={product.storeLinks} availableOnSimatlas={product.availableOnSimatlas} />
         </div>
       </div>
       <div className="screen-shots-container">
